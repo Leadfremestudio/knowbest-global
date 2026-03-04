@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ChevronRight,
+  ChevronLeft,
   ArrowUpRight,
   GraduationCap,
   MapPin,
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   const heroRef = useRef(null);
   const { hash } = useLocation();
+  const [activeDest, setActiveDest] = useState(0);
 
   useEffect(() => {
     if (hash) {
@@ -23,11 +25,7 @@ const Home = () => {
       const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
-          if (window.lenis) {
-            window.lenis.scrollTo(element, { offset: -80 }); // slight offset for header
-          } else {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
+          element.scrollIntoView({ behavior: "smooth" });
         }, 100);
       }
     }
@@ -36,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     // Parallax hero effect
     gsap.to(heroRef.current, {
-      y: "15%",
+      yPercent: 20,
       ease: "none",
       scrollTrigger: {
         trigger: ".hero-container",
@@ -91,33 +89,33 @@ const Home = () => {
   return (
     <div className="bg-primary min-h-screen text-light">
       {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+      <section className="relative w-full h-screen min-h-[600px] px-4 md:px-6 lg:px-8 pt-[104px] md:pt-[130px] pb-4 md:pb-6 lg:pb-8 bg-white flex flex-col items-center">
         {/* Full Viewport Container */}
-        <div className="hero-container relative w-full h-full flex items-center justify-center bg-transparent">
+        <div className="hero-container relative w-full flex-grow max-w-[1400px] flex items-center justify-center rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl">
           {/* Background Image with Parallax & Gradient Overlay */}
           <div className="absolute inset-0 z-0">
             <img
               ref={heroRef}
               src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=2670"
               alt="World Landmarks"
-              className="w-full h-[120%] object-cover object-center -mt-[10%]"
+              className="absolute w-full h-[125%] object-cover object-center -top-[20%]"
             />
             {/* Reduced gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-primary/10 to-transparent mix-blend-multiply"></div>
             <div className="absolute inset-0 bg-black/10"></div>
           </div>
 
-          <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-6 h-full mt-10">
+          <div className="relative z-10 w-full flex flex-col items-center justify-center text-center px-6 h-full mt-0">
             {/* Centered Column - Typography */}
             <div className="w-full max-w-5xl text-center z-20">
-              <h1 className="hero-title text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0">
+              <h1 className="hero-title text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0 drop-shadow-sm">
                 Europe is the hope.
                 <br />
                 <span className="text-accent font-medium">Knowbest Global</span>
                 <br />
                 is the path.
               </h1>
-              <p className="hero-subtitle text-lg md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed will-change-transform opacity-0">
+              <p className="hero-subtitle text-lg md:text-2xl text-white/95 mb-10 max-w-2xl mx-auto font-light leading-relaxed will-change-transform opacity-0 drop-shadow-sm">
                 Your Trusted Partner for Global Education, connecting you with
                 over 1000 top-ranked universities worldwide.
               </p>
@@ -143,7 +141,7 @@ const Home = () => {
         id="about"
         className="py-24 md:py-32 relative bg-primary fade-up-section"
       >
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="w-full max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-5 relative">
             <div className="absolute -inset-4 bg-secondary rounded-[2rem] transform -rotate-3 transition-transform hover:rotate-0 duration-500 origin-center"></div>
             <img
@@ -202,65 +200,115 @@ const Home = () => {
       </section>
 
       {/* Popular Destinations / Study Abroad */}
-      <section className="py-24 bg-secondary/50 relative overflow-hidden fade-up-section border-y border-secondary">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <section className="py-24 bg-light relative overflow-hidden fade-up-section border-y border-gray-100">
+        <div className="w-full max-w-[1400px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="max-w-2xl">
-              <h4 className="text-accent font-semibold tracking-widest uppercase text-sm mb-4">
-                Global Network
+              <h4 className="text-secondary font-semibold tracking-widest uppercase text-sm mb-4">
+                What's happening
               </h4>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-                Top Destinations
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary">
+                See the latest from Knowbest.
               </h2>
             </div>
-            <button className="text-accent hover:text-accent-hover font-semibold flex items-center gap-2 group whitespace-nowrap">
-              View All Countries
-              <ChevronRight
-                className="group-hover:translate-x-1 transition-transform"
-                size={18}
-              />
-            </button>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() =>
+                  setActiveDest((prev) =>
+                    prev === 0 ? siteData.studyAbroad.length - 1 : prev - 1,
+                  )
+                }
+                className="h-12 w-12 rounded-lg bg-primary/5 hover:bg-primary/10 text-primary transition-colors flex items-center justify-center shadow-sm"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={() =>
+                  setActiveDest(
+                    (prev) => (prev + 1) % siteData.studyAbroad.length,
+                  )
+                }
+                className="h-12 w-12 rounded-lg bg-primary/5 hover:bg-primary/10 text-primary transition-colors flex items-center justify-center shadow-sm"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {siteData.studyAbroad.map((country) => (
-              <Link
-                to={`/study-abroad/${country.id}`}
-                key={country.id}
-                className="group block relative overflow-hidden rounded-2xl aspect-[3/4] hover:-translate-y-2 transition-transform duration-500 bg-secondary"
-              >
-                <img
-                  src={country.heroImage}
-                  alt={country.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100 mix-blend-overlay group-hover:mix-blend-normal"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+          <div className="flex h-[450px] md:h-[600px] w-full gap-2 md:gap-4 overflow-hidden py-4">
+            {siteData.studyAbroad.map((country, index) => {
+              const isActive = activeDest === index;
+              return (
+                <div
+                  key={country.id}
+                  onClick={() => setActiveDest(index)}
+                  className={`group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                    isActive
+                      ? "w-[75%] md:w-[80%] flex-grow shadow-xl"
+                      : "w-[12%] md:w-[6%] min-w-[60px] md:min-w-[80px]"
+                  }`}
+                >
+                  <img
+                    src={country.heroImage}
+                    alt={country.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  />
 
-                <div className="absolute bottom-0 left-0 p-6 w-full flex flex-col h-full justify-end">
-                  <div className="w-10 h-10 rounded-full overflow-hidden mb-4 border-2 border-accent shadow-lg transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                    <img
-                      src={country.flag}
-                      alt={country.name}
-                      className="w-full h-full object-cover"
-                    />
+                  {/* Overlay */}
+                  <div
+                    className={`absolute inset-0 transition-all duration-1000 ${isActive ? "bg-gradient-to-t from-dark/90 via-dark/40 to-transparent" : "bg-dark/60 group-hover:bg-dark/40"}`}
+                  ></div>
+
+                  {/* Active Full Content */}
+                  <div
+                    className={`absolute inset-0 p-6 md:p-12 flex flex-col justify-end transition-all duration-500 ease-out transform ${isActive ? "opacity-100 translate-y-0 delay-300" : "opacity-0 translate-y-8 pointer-events-none"}`}
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
+                        <img
+                          src={country.flag}
+                          alt={country.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+                        {country.name}
+                      </h3>
+                    </div>
+
+                    <p className="text-base md:text-lg text-white/90 line-clamp-2 md:line-clamp-3 mb-8 max-w-2xl font-light">
+                      {country.description}
+                    </p>
+
+                    <div>
+                      <Link
+                        to={`/study-abroad/${country.id}`}
+                        className="inline-flex items-center gap-2 bg-white text-primary px-6 py-3.5 rounded-full font-bold hover:bg-accent hover:text-primary transition-all shadow-md"
+                      >
+                        Explore Programs <ChevronRight size={18} />
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-1 flex items-center justify-between">
-                    {country.name}
-                    <ArrowUpRight className="opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
-                  </h3>
-                  <p className="text-sm text-light/70 line-clamp-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                    {country.description}
-                  </p>
+
+                  {/* Squeezed text (only shows when not active) */}
+                  <div
+                    className={`absolute inset-0 flex items-end justify-center pb-12 md:pb-16 transition-all duration-300 ${!isActive ? "opacity-100 delay-300" : "opacity-0 pointer-events-none"}`}
+                  >
+                    <h3 className="text-xl md:text-2xl font-bold text-white whitespace-nowrap -rotate-90 tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">
+                      {country.name}
+                    </h3>
+                  </div>
                 </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className="py-24 md:py-32 bg-primary fade-up-section overflow-hidden">
-        <div className="container mx-auto px-6 text-center mb-16">
+        <div className="w-full max-w-[1400px] mx-auto px-6 text-center mb-16">
           <h4 className="text-accent font-semibold tracking-widest uppercase text-sm mb-4">
             Success Stories
           </h4>
@@ -272,7 +320,7 @@ const Home = () => {
           </h2>
         </div>
 
-        <div className="container mx-auto px-6">
+        <div className="w-full max-w-[1400px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {siteData.testimonials.map((testimonial, idx) => (
               <div

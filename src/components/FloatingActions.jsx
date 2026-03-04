@@ -1,33 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MessageCircle, FileText, X } from "lucide-react";
 
 const FloatingActions = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
       {/* Floating Action Buttons */}
-      <div
-        className={`fixed bottom-8 right-8 flex flex-col gap-4 z-40 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
-          isVisible
-            ? "translate-y-0 opacity-100"
-            : "translate-y-20 opacity-0 pointer-events-none"
-        }`}
-      >
+      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] translate-y-0 opacity-100">
         <button
           onClick={() => setIsModalOpen(true)}
           className="w-14 h-14 bg-primary text-accent rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-secondary transition-all group relative border border-secondary"
