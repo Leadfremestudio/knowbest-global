@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CountryDropdown = ({ isOpen, items }) => {
+const CountryDropdown = ({ isOpen, items, basePath = "/study-abroad" }) => {
   return (
     <div
       className={`absolute top-full left-0 w-64 bg-secondary shadow-lg overflow-hidden transition-all duration-300 ease-in-out origin-top z-50 rounded-b-lg ${
@@ -13,7 +13,7 @@ const CountryDropdown = ({ isOpen, items }) => {
         {items.map((item) => (
           <li key={item.id}>
             <Link
-              to={`/study-abroad/${item.id}`}
+              to={`${basePath}/${item.id}`}
               className="flex items-center gap-3 px-4 py-3 text-light/80 hover:text-accent hover:bg-primary transition-colors"
             >
               {item.flag && (

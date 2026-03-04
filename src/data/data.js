@@ -5,7 +5,7 @@ export const siteData = {
       name: "United Kingdom",
       flag: "https://flagcdn.com/w80/gb.png",
       heroImage:
-        "https://images.unsplash.com/photo-1513635269975-5969336d9ce1?q=80&w=2670&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1520986606214-8b456906c813?q=80&w=2670&auto=format&fit=crop",
       description:
         "Experience world-class education in the UK with globally recognized degrees, rich history, and vibrant student life.",
       courses: [
@@ -87,17 +87,87 @@ export const siteData = {
   ],
   jobAbroad: [
     {
+      id: "uk",
+      name: "United Kingdom",
+      flag: "https://flagcdn.com/w80/gb.png",
+      heroImage:
+        "https://images.unsplash.com/photo-1520986606214-8b456906c813?q=80&w=2670&auto=format&fit=crop",
+      description:
+        "Build a prominent career in the UK with excellent healthcare, banking, and technology demand.",
+      courses: [
+        {
+          courseName: "Healthcare",
+          details: ["NHS Nurses", "Care Workers", "Doctors"],
+        },
+        {
+          courseName: "IT & Tech",
+          details: ["Software Developer", "Data Analyst"],
+        },
+      ],
+    },
+    {
       id: "uae",
       name: "United Arab Emirates",
+      flag: "https://flagcdn.com/w80/ae.png",
+      heroImage:
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop",
       description:
         "Explore tax-free income and highly competitive salaries in the booming cities of Dubai and Abu Dhabi.",
+      courses: [
+        {
+          courseName: "Healthcare",
+          details: ["Registered Nurse", "Specialist Doctor", "Pharmacist"],
+        },
+        {
+          courseName: "Engineering & Construction",
+          details: ["Civil Engineer", "Project Manager", "Architect"],
+        },
+      ],
+    },
+    {
+      id: "canada",
+      name: "Canada",
+      flag: "https://flagcdn.com/w80/ca.png",
+      heroImage:
+        "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2611&auto=format&fit=crop",
+      description:
+        "A welcoming environment with massive demand for skilled professionals and straightforward PR pathways.",
+      courses: [
+        {
+          courseName: "Trades & Transport",
+          details: ["Truck Drivers", "Electricians", "Welders"],
+        },
+        {
+          courseName: "Technology",
+          details: ["Software Engineer", "IT Project Manager"],
+        },
+      ],
+    },
+    {
+      id: "germany",
+      name: "Germany",
+      flag: "https://flagcdn.com/w80/de.png",
+      heroImage:
+        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=2670&auto=format&fit=crop",
+      description:
+        "Join the powerhouse of Europe with exceptional opportunities for engineers and medical staff.",
+      courses: [
+        {
+          courseName: "Engineering",
+          details: ["Automotive Engineer", "Mechanical Engineer"],
+        },
+        {
+          courseName: "Healthcare",
+          details: ["Nurses (Ausbildung)", "Physicians"],
+        },
+      ],
     },
   ],
   testimonials: [
     {
       name: "Aisha R.",
       university: "University of Oxford, UK",
-      text: "Nobest Global made the entire process so smooth! From applying to sorting out the visa, their team was incredibly helpful.",
+      text: "Knowbest Global made the entire process so smooth! From applying to sorting out the visa, their team was incredibly helpful.",
       image:
         "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=300",
     },

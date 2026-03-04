@@ -3,13 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { siteData } from "../data/data";
 import CountryDropdown from "./CountryDropdown";
-import logo from "../assets/images/nobest global -logo.png";
+import logo from "../assets/images/knowbest-global-logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const [studyDropdownOpen, setStudyDropdownOpen] = useState(false);
+  const [jobDropdownOpen, setJobDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -40,7 +41,6 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/#about" },
-    { name: "Achievements", path: "/#achievements" },
   ];
 
   return (
@@ -58,7 +58,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center shrink-0 z-50">
           <img
             src={logo}
-            alt="Nobest Global"
+            alt="Knowbest Global"
             className={`w-auto object-contain transition-all duration-500 ease-in-out origin-left ${
               scrolled ? "h-12 md:h-14" : "h-14 md:h-[65px]"
             }`}
@@ -93,6 +93,27 @@ const Navbar = () => {
             <CountryDropdown
               isOpen={studyDropdownOpen}
               items={siteData.studyAbroad}
+              basePath="/study-abroad"
+            />
+          </div>
+
+          <div
+            className="relative group"
+            onMouseEnter={() => setJobDropdownOpen(true)}
+            onMouseLeave={() => setJobDropdownOpen(false)}
+          >
+            <button
+              className={`flex items-center gap-1 ${scrolled ? "text-primary" : "text-white"} hover:text-accent transition-colors font-medium text-[15px] tracking-wide py-1 border-none focus:outline-none drop-shadow-sm`}
+            >
+              Job Abroad
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 ${jobDropdownOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            <CountryDropdown
+              isOpen={jobDropdownOpen}
+              items={siteData.jobAbroad}
+              basePath="/job-abroad"
             />
           </div>
         </nav>
@@ -146,6 +167,28 @@ const Navbar = () => {
                 <Link
                   key={country.id}
                   to={`/study-abroad/${country.id}`}
+                  className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <img
+                    src={country.flag}
+                    alt={country.name}
+                    className="w-5 h-3 object-cover rounded-sm"
+                  />
+                  {country.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-4 w-full px-6">
+            <span className="text-2xl font-medium text-primary border-b border-primary/10 pb-2">
+              Job Abroad
+            </span>
+            <div className="flex flex-wrap justify-center gap-4">
+              {siteData.jobAbroad.map((country) => (
+                <Link
+                  key={country.id}
+                  to={`/job-abroad/${country.id}`}
                   className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >

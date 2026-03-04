@@ -113,9 +113,7 @@ const Home = () => {
               <h1 className="hero-title text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0">
                 Europe is the hope.
                 <br />
-                <span className="text-accent font-medium">
-                  Knowbest Global
-                </span>
+                <span className="text-accent font-medium">Knowbest Global</span>
                 <br />
                 is the path.
               </h1>
@@ -166,7 +164,7 @@ const Home = () => {
               </span>
             </h2>
             <p className="text-light/70 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl font-light">
-              At Nobest Global, we believe that education should have no
+              At Knowbest Global, we believe that education should have no
               geographical limits. We provide bespoke consultancy services
               tailored to your unique academic and professional goals, ensuring
               a seamless transition to the world's most prestigious

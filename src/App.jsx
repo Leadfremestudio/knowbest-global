@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import FloatingActions from "./components/FloatingActions";
 import Home from "./pages/Home";
 import CountryDetail from "./pages/CountryDetail";
+import JobDetail from "./pages/JobDetail";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/study-abroad/:country" element={<CountryDetail />} />
+            <Route path="/job-abroad/:country" element={<JobDetail />} />
           </Routes>
         </main>
         <Footer />

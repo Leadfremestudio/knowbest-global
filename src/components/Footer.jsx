@@ -7,7 +7,7 @@ import {
   Facebook,
   Linkedin,
 } from "lucide-react";
-import logo from "../assets/images/nobest global -logo.png";
+import logo from "../assets/images/knowbest-global-logo.png";
 
 const Footer = () => {
   return (
@@ -21,11 +21,11 @@ const Footer = () => {
           >
             <img
               src={logo}
-              alt="Nobest Global"
+              alt="Knowbest Global"
               className="h-10 w-auto object-contain"
             />
             <span>
-              Nobest Global<span className="text-light">.</span>
+              Knowbest Global<span className="text-light">.</span>
             </span>
           </Link>
           <p className="text-sm leading-relaxed max-w-xs">
@@ -121,7 +121,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-accent shrink-0" />
-              <span>contact@nobestglobal.com</span>
+              <span>contact@knowbestglobal.com</span>
             </li>
           </ul>
         </div>
@@ -152,7 +152,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-6 pt-8 border-t border-secondary/50 flex flex-col md:flex-row items-center justify-between text-xs text-light/50">
         <p>
-          &copy; {new Date().getFullYear()} Nobest Global Consultancy. All
+          &copy; {new Date().getFullYear()} Knowbest Global Consultancy. All
           rights reserved.
         </p>
         <div className="flex gap-4 mt-4 md:mt-0">
