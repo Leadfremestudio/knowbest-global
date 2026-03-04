@@ -113,8 +113,8 @@ const Home = () => {
               <h1 className="hero-title text-5xl md:text-7xl lg:text-[5.5rem] font-medium leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0">
                 Europe is the hope.
                 <br />
-                <span className="text-accent italic font-light">
-                  Nobest Global
+                <span className="text-accent font-medium">
+                  Knowbest Global
                 </span>
                 <br />
                 is the path.
