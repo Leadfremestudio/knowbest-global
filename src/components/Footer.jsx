@@ -94,15 +94,55 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/study-abroad/germany"
+                to="/study-abroad/ukraine"
                 className="hover:text-accent transition-colors"
               >
-                Study in Germany
+                Study in Ukraine
               </Link>
             </li>
           </ul>
         </div>
 
+        {/* Quick Links Job */}
+        <div>
+          <h4 className="text-lg font-semibold text-light mb-6">Job Abroad</h4>
+          <ul className="flex flex-col gap-3 text-sm">
+            <li>
+              <Link
+                to="/job-abroad/uk"
+                className="hover:text-accent transition-colors"
+              >
+                Work in UK
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/job-abroad/us"
+                className="hover:text-accent transition-colors"
+              >
+                Work in USA
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/job-abroad/canada"
+                className="hover:text-accent transition-colors"
+              >
+                Work in Canada
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/job-abroad/ukraine"
+                className="hover:text-accent transition-colors"
+              >
+                Work in Ukraine
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
         {/* Contact Info */}
         <div>
           <h4 className="text-lg font-semibold text-light mb-6">Contact Us</h4>
@@ -124,29 +164,6 @@ const Footer = () => {
               <span>contact@knowbestglobal.com</span>
             </li>
           </ul>
-        </div>
-
-        {/* Newsletter */}
-        <div>
-          <h4 className="text-lg font-semibold text-light mb-6">Newsletter</h4>
-          <p className="text-sm mb-4">
-            Subscribe to our newsletter for the latest updates on study
-            programs.
-          </p>
-          <form className="flex">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="bg-secondary text-light px-4 py-3 rounded-l-md focus:outline-none focus:ring-1 focus:ring-accent w-full text-sm"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-accent text-primary px-4 py-3 rounded-r-md font-semibold hover:bg-accent-hover transition-colors text-sm"
-            >
-              Subscribe
-            </button>
-          </form>
         </div>
       </div>
 

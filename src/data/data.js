@@ -70,17 +70,24 @@ export const siteData = {
       ],
     },
     {
-      id: "germany",
-      name: "Germany",
-      flag: "https://flagcdn.com/w80/de.png",
+      id: "ukraine",
+      name: "Ukraine",
+      flag: "https://flagcdn.com/w80/ua.png",
       heroImage:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=2670&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1591302989198-c5bdcdbc2cc0?q=80&w=2670&auto=format&fit=crop",
       description:
-        "Take advantage of tuition-free public universities, exceptionally strong engineering programs, and a thriving economy.",
+        "A recognized destination for medical studies and engineering courses offering high-quality education at affordable costs.",
       courses: [
         {
-          courseName: "Automotive Engineering",
-          details: ["TU Munich", "RWTH Aachen University", "TU Berlin"],
+          courseName: "Medicine / MBBS",
+          details: [
+            "Bogomolets National Medical University",
+            "Karazin Kharkiv National University",
+          ],
+        },
+        {
+          courseName: "Engineering",
+          details: ["Kyiv Polytechnic Institute", "Lviv Polytechnic"],
         },
       ],
     },
@@ -106,21 +113,21 @@ export const siteData = {
       ],
     },
     {
-      id: "uae",
-      name: "United Arab Emirates",
-      flag: "https://flagcdn.com/w80/ae.png",
+      id: "us",
+      name: "United States",
+      flag: "https://flagcdn.com/w80/us.png",
       heroImage:
-        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2670&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2670&auto=format&fit=crop",
       description:
-        "Explore tax-free income and highly competitive salaries in the booming cities of Dubai and Abu Dhabi.",
+        "Unlock massive career growth and competitive salaries across technology and healthcare sectors.",
       courses: [
         {
-          courseName: "Healthcare",
-          details: ["Registered Nurse", "Specialist Doctor", "Pharmacist"],
+          courseName: "Technology",
+          details: ["Software Engineer", "Data Scientist", "Product Manager"],
         },
         {
-          courseName: "Engineering & Construction",
-          details: ["Civil Engineer", "Project Manager", "Architect"],
+          courseName: "Healthcare",
+          details: ["Registered Nurse", "Physical Therapist"],
         },
       ],
     },
@@ -144,21 +151,21 @@ export const siteData = {
       ],
     },
     {
-      id: "germany",
-      name: "Germany",
-      flag: "https://flagcdn.com/w80/de.png",
+      id: "ukraine",
+      name: "Ukraine",
+      flag: "https://flagcdn.com/w80/ua.png",
       heroImage:
-        "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=2670&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1591302989198-c5bdcdbc2cc0?q=80&w=2670&auto=format&fit=crop",
       description:
-        "Join the powerhouse of Europe with exceptional opportunities for engineers and medical staff.",
+        "Growing opportunities in tech outsourcing and reconstruction projects requiring skilled international professionals.",
       courses: [
         {
-          courseName: "Engineering",
-          details: ["Automotive Engineer", "Mechanical Engineer"],
+          courseName: "IT Sector",
+          details: ["Software Developer", "QA Engineer"],
         },
         {
-          courseName: "Healthcare",
-          details: ["Nurses (Ausbildung)", "Physicians"],
+          courseName: "Engineering & Construction",
+          details: ["Civil Engineer", "Project Manager"],
         },
       ],
     },
