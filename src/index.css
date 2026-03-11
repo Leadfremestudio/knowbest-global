@@ -14,8 +14,14 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-light text-primary font-sans antialiased overflow-x-hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -37,8 +43,4 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
-}
-
-html {
-  scroll-behavior: smooth;
 }

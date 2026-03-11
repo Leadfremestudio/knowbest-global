@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle, FileText, X } from "lucide-react";
 
 const FloatingActions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [targetCountry, setTargetCountry] = useState("");
+
+  useEffect(() => {
+    const handleOpenInquiry = (e) => {
+      setIsModalOpen(true);
+      if (e.detail?.country) {
+        setTargetCountry(e.detail.country);
+      }
+    };
+    window.addEventListener("open-inquiry", handleOpenInquiry);
+    return () => window.removeEventListener("open-inquiry", handleOpenInquiry);
+  }, []);
 
   return (
     <>
@@ -10,14 +22,14 @@ const FloatingActions = () => {
       <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] translate-y-0 opacity-100">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="w-14 h-14 bg-primary text-accent rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-secondary transition-all group relative border border-secondary"
+          className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover transition-all group relative border border-accent"
           aria-label="Submit Inquiry"
         >
           <FileText
             size={24}
             className="group-hover:-translate-y-0.5 transition-transform"
           />
-          <span className="absolute right-full mr-4 bg-primary text-light px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-secondary">
+          <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
             Quick Inquiry
           </span>
         </button>
@@ -26,14 +38,14 @@ const FloatingActions = () => {
           href="https://wa.me/1234567890"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all group relative"
+          className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover border border-accent transition-all group relative"
           aria-label="Chat on WhatsApp"
         >
           <MessageCircle
             size={28}
             className="group-hover:-translate-y-0.5 transition-transform"
           />
-          <span className="absolute right-full mr-4 bg-primary text-light px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-secondary">
+          <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
             Chat with us
           </span>
         </a>
@@ -88,13 +100,13 @@ const FloatingActions = () => {
                 <label className="block text-sm font-medium mb-1">
                   Target Country
                 </label>
-                <select className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
-                  <option>United Kingdom</option>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Germany</option>
-                  <option>Other</option>
-                </select>
+                <input
+                  type="text"
+                  value={targetCountry}
+                  onChange={(e) => setTargetCountry(e.target.value)}
+                  className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                  placeholder="e.g. United Kingdom"
+                />
               </div>
 
               <div>

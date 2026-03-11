@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FloatingActions from "./components/FloatingActions";
+
 import Home from "./pages/Home";
 import CountryDetail from "./pages/CountryDetail";
 import JobDetail from "./pages/JobDetail";

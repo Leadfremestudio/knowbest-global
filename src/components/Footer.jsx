@@ -11,8 +11,8 @@ import logo from "../assets/images/knowbest-global-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-light/80 pt-20 pb-10 border-t border-secondary">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-primary text-light/80 pt-12 md:pt-20 pb-8 md:pb-10 border-t border-secondary">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12 mb-10 md:mb-16">
         {/* Brand */}
         <div className="col-span-1 md:col-span-1 flex flex-col gap-6">
           <Link
@@ -64,7 +64,10 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="#about" className="hover:text-accent transition-colors">
+              <Link
+                to="/#about"
+                className="hover:text-accent transition-colors"
+              >
                 About Us
               </Link>
             </li>

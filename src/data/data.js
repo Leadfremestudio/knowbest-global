@@ -1,11 +1,17 @@
+// Country Hero Images
+
+import ukHero from "../assets/images/countries/uk-hero.webp";
+import usHero from "../assets/images/countries/us-hero.webp";
+import canadaHero from "../assets/images/countries/canada-hero.webp";
+import ukraineHero from "../assets/images/countries/ukraine-hero.webp";
+
 export const siteData = {
   studyAbroad: [
     {
       id: "uk",
       name: "United Kingdom",
       flag: "https://flagcdn.com/w80/gb.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1520986606214-8b456906c813?q=80&w=2670&auto=format&fit=crop",
+      heroImage: ukHero,
       description:
         "Experience world-class education in the UK with globally recognized degrees, rich history, and vibrant student life.",
       courses: [
@@ -35,8 +41,7 @@ export const siteData = {
       id: "us",
       name: "United States",
       flag: "https://flagcdn.com/w80/us.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2670&auto=format&fit=crop",
+      heroImage: usHero,  
       description:
         "Study in the United States to unlock access to cutting-edge research, a vast network of professionals, and a diverse culture.",
       courses: [
@@ -48,14 +53,17 @@ export const siteData = {
           courseName: "Medicine",
           details: ["Harvard University", "Johns Hopkins University"],
         },
+        {
+          courseName: "Business / MBA",
+          details: ["London Business School", "Warwick Business School"],
+        },
       ],
     },
     {
       id: "canada",
       name: "Canada",
       flag: "https://flagcdn.com/w80/ca.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2611&auto=format&fit=crop",
+      heroImage: canadaHero,
       description:
         "A welcoming country with excellent academic institutions, high quality of life, and easy pathways to post-graduation work.",
       courses: [
@@ -73,8 +81,7 @@ export const siteData = {
       id: "ukraine",
       name: "Ukraine",
       flag: "https://flagcdn.com/w80/ua.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1591302989198-c5bdcdbc2cc0?q=80&w=2670&auto=format&fit=crop",
+      heroImage: ukraineHero,
       description:
         "A recognized destination for medical studies and engineering courses offering high-quality education at affordable costs.",
       courses: [
@@ -97,8 +104,7 @@ export const siteData = {
       id: "uk",
       name: "United Kingdom",
       flag: "https://flagcdn.com/w80/gb.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1520986606214-8b456906c813?q=80&w=2670&auto=format&fit=crop",
+      heroImage: ukHero,
       description:
         "Build a prominent career in the UK with excellent healthcare, banking, and technology demand.",
       courses: [
@@ -116,8 +122,7 @@ export const siteData = {
       id: "us",
       name: "United States",
       flag: "https://flagcdn.com/w80/us.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2670&auto=format&fit=crop",
+      heroImage: usHero,
       description:
         "Unlock massive career growth and competitive salaries across technology and healthcare sectors.",
       courses: [
@@ -135,8 +140,7 @@ export const siteData = {
       id: "canada",
       name: "Canada",
       flag: "https://flagcdn.com/w80/ca.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2611&auto=format&fit=crop",
+      heroImage: canadaHero,
       description:
         "A welcoming environment with massive demand for skilled professionals and straightforward PR pathways.",
       courses: [
@@ -154,8 +158,7 @@ export const siteData = {
       id: "ukraine",
       name: "Ukraine",
       flag: "https://flagcdn.com/w80/ua.png",
-      heroImage:
-        "https://images.unsplash.com/photo-1591302989198-c5bdcdbc2cc0?q=80&w=2670&auto=format&fit=crop",
+      heroImage: ukraineHero,
       description:
         "Growing opportunities in tech outsourcing and reconstruction projects requiring skilled international professionals.",
       courses: [
@@ -191,6 +194,20 @@ export const siteData = {
       text: "A truly professional team. They helped me find a tuition-free engineering program and supported me all the way to Germany.",
       image:
         "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
+    },
+    {
+      name: "Michael T.",
+      university: "Stanford University, USA",
+      text: "The dedication of the Knowbest team is unmatched. They handled everything from university selection to visa interviews seamlessly.",
+      image:
+        "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&q=80&w=300",
+    },
+    {
+      name: "Priya P.",
+      university: "University of Melbourne, Australia",
+      text: "Getting into my dream university felt impossible until I met the Knowbest Global consultants. Their personalized approach changed my life.",
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300",
     },
   ],
 };

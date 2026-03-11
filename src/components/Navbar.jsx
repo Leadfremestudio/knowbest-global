@@ -12,6 +12,8 @@ const Navbar = () => {
   const [studyDropdownOpen, setStudyDropdownOpen] = useState(false);
   const [jobDropdownOpen, setJobDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileStudyOpen, setMobileStudyOpen] = useState(false);
+  const [mobileJobOpen, setMobileJobOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -45,19 +47,19 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-4 md:top-6 left-0 w-full px-4 md:px-6 lg:px-8 z-50 transition-all duration-500 ease-in-out flex justify-center pointer-events-none ${
+      className={`fixed top-4 md:top-8 lg:top-10 left-0 w-full px-4 md:px-10 lg:px-12 z-50 transition-all duration-500 ease-in-out flex justify-center pointer-events-none ${
         visible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0"
       }`}
     >
-      <div className="w-full max-w-[1400px] mx-auto flex items-center justify-center">
+      <div className="w-full max-w-[1360px] mx-auto flex items-center justify-center">
         <header
-          className={`w-full bg-white rounded-full pointer-events-auto transition-all duration-500 ease-in-out flex flex-col justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 ${
-            scrolled ? "py-2 px-6 md:px-8" : "py-3 px-6 md:px-10"
+          className={`w-full bg-white/95 backdrop-blur-md rounded-full pointer-events-auto transition-all duration-500 ease-in-out flex flex-col justify-center shadow-md border border-white/50 ${
+            scrolled ? "py-2 px-4 md:px-8" : "py-3 px-4 md:px-8"
           }`}
         >
           <div className="flex justify-between items-center relative w-full">
             {/* Logo Left */}
-            <Link to="/" className="flex items-center shrink-0 z-50">
+            <Link to="/" className="flex items-center shrink-0 z-50 gap-2">
               <img
                 src={logo}
                 alt="Knowbest Global"
@@ -65,15 +67,18 @@ const Navbar = () => {
                   scrolled ? "h-10 md:h-12" : "h-12 md:h-14"
                 }`}
               />
+              <span className="font-bold text-primary text-xl hidden lg:block tracking-tight">
+                Knowbest Global
+              </span>
             </Link>
 
-            {/* Desktop Nav Center */}
-            <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2 z-10 w-max">
+            {/* Desktop Nav Right */}
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8 justify-end flex-1 pr-6 z-10 w-max">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-primary hover:text-accent transition-colors font-semibold text-[15px]"
+                  className="text-primary hover:text-accent transition-colors font-bold text-[15px]"
                 >
                   {link.name}
                 </Link>
@@ -84,7 +89,7 @@ const Navbar = () => {
                 onMouseEnter={() => setStudyDropdownOpen(true)}
                 onMouseLeave={() => setStudyDropdownOpen(false)}
               >
-                <button className="flex items-center gap-1 text-primary hover:text-accent transition-colors font-semibold text-[15px] py-1 border-none focus:outline-none">
+                <button className="flex items-center gap-1 text-primary hover:text-accent transition-colors font-bold text-[15px] py-1 border-none focus:outline-none">
                   Study Abroad
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${studyDropdownOpen ? "rotate-180" : ""}`}
@@ -102,7 +107,7 @@ const Navbar = () => {
                 onMouseEnter={() => setJobDropdownOpen(true)}
                 onMouseLeave={() => setJobDropdownOpen(false)}
               >
-                <button className="flex items-center gap-1 text-primary hover:text-accent transition-colors font-semibold text-[15px] py-1 border-none focus:outline-none">
+                <button className="flex items-center gap-1 text-primary hover:text-accent transition-colors font-bold text-[15px] py-1 border-none focus:outline-none">
                   Job Abroad
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ${jobDropdownOpen ? "rotate-180" : ""}`}
@@ -120,7 +125,7 @@ const Navbar = () => {
             <div className="hidden md:flex z-50 justify-end items-center">
               <Link
                 to="/#contact"
-                className="flex items-center gap-2 bg-transparent border border-primary/20 hover:border-primary text-primary px-6 py-2.5 rounded-full font-semibold transition-all duration-300"
+                className="flex items-center gap-2 bg-transparent border border-primary/20 hover:bg-primary/5 text-primary px-5 py-2 rounded-full font-bold text-[15px] transition-all duration-300"
               >
                 Contact Us{" "}
                 <ChevronRight
@@ -140,69 +145,93 @@ const Navbar = () => {
 
             {/* Mobile Nav Overlay */}
             <div
-              className={`fixed inset-0 top-0 left-0 w-[100vw] h-screen bg-white z-40 md:hidden transition-transform duration-300 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"} flex flex-col items-center justify-center gap-8 pt-20`}
+              className={`fixed -top-4 -left-4 w-[100vw] h-[100vh] bg-white z-40 md:hidden transition-transform duration-300 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"} flex flex-col items-center pt-28 pb-8 overflow-y-auto`}
             >
+              <div className="flex flex-col items-center justify-start gap-6 w-full px-6 flex-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-2xl font-medium text-primary hover:text-accent"
+                  className="text-xl font-medium text-primary hover:text-accent"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="flex flex-col items-center gap-4 w-full px-6">
-                <span className="text-2xl font-medium text-primary border-b border-primary/10 pb-2">
+              <div className="flex flex-col items-center w-full mt-2">
+                <button
+                  className="flex items-center justify-center gap-2 text-xl font-medium text-primary pb-2 w-full max-w-[200px]"
+                  onClick={() => setMobileStudyOpen(!mobileStudyOpen)}
+                >
                   Study Abroad
-                </span>
-                <div className="flex flex-wrap justify-center gap-4">
-                  {siteData.studyAbroad.map((country) => (
-                    <Link
-                      key={country.id}
-                      to={`/study-abroad/${country.id}`}
-                      className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <img
-                        src={country.flag}
-                        alt={country.name}
-                        className="w-5 h-3 object-cover rounded-sm"
-                      />
-                      {country.name}
-                    </Link>
-                  ))}
+                  <ChevronDown
+                    className={`w-6 h-6 transition-transform duration-300 ${mobileStudyOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <div
+                  className={`flex flex-col items-center overflow-hidden transition-all duration-300 w-full ${mobileStudyOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                >
+                  <div className="flex flex-col gap-3 w-full max-w-[250px]">
+                    {siteData.studyAbroad.map((country) => (
+                      <Link
+                        key={country.id}
+                        to={`/study-abroad/${country.id}`}
+                        className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <img
+                          src={country.flag}
+                          alt={country.name}
+                          className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                        />
+                        <span className="text-base font-medium">{country.name}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-4 w-full px-6">
-                <span className="text-2xl font-medium text-primary border-b border-primary/10 pb-2">
+
+              <div className="flex flex-col items-center w-full mt-2">
+                <button
+                  className="flex items-center justify-center gap-2 text-xl font-medium text-primary pb-2 w-full max-w-[200px]"
+                  onClick={() => setMobileJobOpen(!mobileJobOpen)}
+                >
                   Job Abroad
-                </span>
-                <div className="flex flex-wrap justify-center gap-4">
-                  {siteData.jobAbroad.map((country) => (
-                    <Link
-                      key={country.id}
-                      to={`/job-abroad/${country.id}`}
-                      className="flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <img
-                        src={country.flag}
-                        alt={country.name}
-                        className="w-5 h-3 object-cover rounded-sm"
-                      />
-                      {country.name}
-                    </Link>
-                  ))}
+                  <ChevronDown
+                    className={`w-6 h-6 transition-transform duration-300 ${mobileJobOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <div
+                  className={`flex flex-col items-center overflow-hidden transition-all duration-300 w-full ${mobileJobOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                >
+                  <div className="flex flex-col gap-3 w-full max-w-[250px]">
+                    {siteData.jobAbroad.map((country) => (
+                      <Link
+                        key={country.id}
+                        to={`/job-abroad/${country.id}`}
+                        className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        <img
+                          src={country.flag}
+                          alt={country.name}
+                          className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                        />
+                        <span className="text-base font-medium">{country.name}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
+
               <Link
                 to="/#contact"
-                className="mt-4 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-accent transition-colors"
+                className="mt-6 bg-primary text-white px-8 py-3 rounded-full font-bold text-base hover:bg-accent transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact Us
               </Link>
+              </div>
             </div>
           </div>
         </header>
