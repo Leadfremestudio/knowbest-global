@@ -1,13 +1,18 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ChevronRight } from "lucide-react";
 import { siteData } from "../data/data";
+import { useReveal } from "../hooks/useReveal";
 import CourseAccordion from "../components/CourseAccordion";
 
 const CountryDetail = () => {
   const { country } = useParams();
   const [countryData, setCountryData] = useState(null);
   const [openAccordion, setOpenAccordion] = useState(null);
+  const mainRef = useRef(null);
+
+  // Centralized animation reveal hook
+  useReveal(mainRef, [country]);
 
   useEffect(() => {
     // Scroll to top on route change
@@ -20,11 +25,9 @@ const CountryDetail = () => {
 
   if (!countryData) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-primary">
+      <div className="min-h-screen flex items-center justify-center bg-primary text-light">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-light mb-4">
-            Country Not Found
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Country Not Found</h2>
           <Link to="/" className="text-accent hover:underline">
             Return to Home
           </Link>
@@ -38,20 +41,18 @@ const CountryDetail = () => {
   };
 
   return (
-    <div className="bg-primary min-h-screen text-light">
+    <div ref={mainRef} className="bg-primary min-h-screen text-light">
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src={countryData.heroImage}
             alt={countryData.name}
-            className="w-full h-full object-cover g-parallax-bg"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-primary/50"></div>
         </div>
 
-        {/* Content */}
         <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-16 md:mt-20">
           <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-accent mb-6 shadow-2xl animate-fade-in-up">
             <img
@@ -85,8 +86,7 @@ const CountryDetail = () => {
       {/* Overview & Courses Section */}
       <section className="py-12 md:py-20 bg-light relative">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
-          {/* Overview sidebar */}
-          <div className="lg:col-span-1 border-r-0 lg:border-r border-gray-300 pr-0 lg:pr-10">
+          <div className="lg:col-span-1 border-r-0 lg:border-r border-gray-300 pr-0 lg:pr-10 reveal-item">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4 md:mb-6 flex items-center gap-3 text-primary">
               <span className="w-6 md:w-8 h-1 bg-accent inline-block rounded-full"></span>
               Overview
@@ -95,7 +95,7 @@ const CountryDetail = () => {
               {countryData.description}
             </p>
 
-            <div className="mt-10 p-6 bg-primary rounded-2xl border border-secondary hover:border-accent transition-colors">
+            <div className="mt-10 p-6 bg-primary rounded-2xl border border-secondary hover:border-accent transition-colors reveal-item">
               <h4 className="text-accent font-semibold mb-2">Need Guidance?</h4>
               <p className="text-sm text-light/90 mb-4">
                 Our expert counselors are ready to help you plan your journey to{" "}
@@ -116,14 +116,12 @@ const CountryDetail = () => {
             </div>
           </div>
 
-          {/* Courses List */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-6 md:mb-10 text-primary">
-              Available{" "}
-              <span className="text-accent">Programs</span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-6 md:mb-10 text-primary reveal-item">
+              Available <span className="text-accent">Programs</span>
             </h2>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 reveal-group">
               {countryData.courses.map((course, index) => (
                 <CourseAccordion
                   key={index}
@@ -131,6 +129,8 @@ const CountryDetail = () => {
                   items={course.details}
                   isOpen={openAccordion === index}
                   onClick={() => toggleAccordion(index)}
+                  className="reveal-item-child"
+                  countryName={countryData.name}
                 />
               ))}
             </div>

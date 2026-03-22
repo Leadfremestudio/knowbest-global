@@ -32,15 +32,15 @@ const ContactForm = () => {
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-4">
               
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-[1.1]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary leading-[1.1] reveal-item">
                 Go anywhere with <br />
                 <span className="text-accent">Knowbest</span>
               </h2>
             </div>
 
-            <div className="bg-primary/5 p-4 md:p-8 rounded-[2rem] shadow-sm border border-black/5">
+            <div className="bg-primary/5 p-4 md:p-8 rounded-[2rem] shadow-sm border border-black/5 reveal-group">
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div className="relative group">
+                <div className="relative group reveal-item-child">
                   <input
                     type="text"
                     name="name"
@@ -52,7 +52,7 @@ const ContactForm = () => {
                   />
                 </div>
 
-                <div className="relative group">
+                <div className="relative group reveal-item-child">
                   <input
                     type="email"
                     name="email"
@@ -64,7 +64,7 @@ const ContactForm = () => {
                   />
                 </div>
 
-                <div className="relative group">
+                <div className="relative group reveal-item-child">
                   <input
                     type="text"
                     name="targetCountries"
@@ -76,7 +76,7 @@ const ContactForm = () => {
                   />
                 </div>
 
-                <div className="relative group">
+                <div className="relative group reveal-item-child">
                   <textarea
                     name="message"
                     value={formData.message}
@@ -88,7 +88,7 @@ const ContactForm = () => {
                   ></textarea>
                 </div>
 
-                <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+                <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center gap-4 md:gap-6 reveal-item-child">
                   <button
                     type="submit"
                     className="bg-primary text-white px-8 py-3.5 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-black transition-all shadow-lg active:scale-95"
@@ -101,7 +101,7 @@ const ContactForm = () => {
           </div>
 
           {/* Right Side: Image Only */}
-          <div className="relative w-full aspect-square md:aspect-[4/5] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl">
+          <div className="relative w-full aspect-square md:aspect-[4/5] lg:h-[700px] rounded-[2rem] overflow-hidden shadow-2xl reveal-item">
             <img
               src={formImage}
               alt="Study abroad journey"

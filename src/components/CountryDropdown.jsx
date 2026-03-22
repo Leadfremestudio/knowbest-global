@@ -9,7 +9,7 @@ const CountryDropdown = ({ isOpen, items, basePath = "/study-abroad" }) => {
           : "scale-y-0 opacity-0 pointer-events-none"
       }`}
     >
-      <ul className="flex flex-col py-2">
+      <ul className="flex flex-col py-2 max-h-[60vh] overflow-y-auto">
         {items.map((item) => (
           <li key={item.id}>
             <Link

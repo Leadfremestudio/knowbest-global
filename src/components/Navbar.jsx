@@ -10,29 +10,38 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const [studyDropdownOpen, setStudyDropdownOpen] = useState(false);
-  const [jobDropdownOpen, setJobDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileStudyOpen, setMobileStudyOpen] = useState(false);
-  const [mobileJobOpen, setMobileJobOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
 
-      setScrolled(currentScrollY > 50);
+          setScrolled(currentScrollY > 50);
 
-      // Hide navbar when scrolling down, show when scrolling up
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setVisible(false);
-      } else {
-        setVisible(true);
+          // Hide navbar when scrolling down, show when scrolling up
+          if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            setVisible(false);
+          } else {
+            setVisible(true);
+          }
+
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      lastScrollY.current = currentScrollY;
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -102,23 +111,12 @@ const Navbar = () => {
                 />
               </div>
 
-              <div
-                className="relative group"
-                onMouseEnter={() => setJobDropdownOpen(true)}
-                onMouseLeave={() => setJobDropdownOpen(false)}
+              <Link
+                to="/job-abroad"
+                className="text-primary hover:text-accent transition-colors font-bold text-[15px] py-1"
               >
-                <button className="flex items-center gap-1 text-primary hover:text-accent transition-colors font-bold text-[15px] py-1 border-none focus:outline-none">
-                  Job Abroad
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-300 ${jobDropdownOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                <CountryDropdown
-                  isOpen={jobDropdownOpen}
-                  items={siteData.jobAbroad}
-                  basePath="/job-abroad"
-                />
-              </div>
+                Job Abroad
+              </Link>
             </nav>
 
             {/* Contact Button Right */}
@@ -169,7 +167,7 @@ const Navbar = () => {
                   />
                 </button>
                 <div
-                  className={`flex flex-col items-center overflow-hidden transition-all duration-300 w-full ${mobileStudyOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
+                  className={`flex flex-col items-center transition-all duration-300 w-full ${mobileStudyOpen ? "max-h-[50vh] overflow-y-auto opacity-100 mt-4" : "max-h-0 overflow-hidden opacity-0"}`}
                 >
                   <div className="flex flex-col gap-3 w-full max-w-[250px]">
                     {siteData.studyAbroad.map((country) => (
@@ -192,36 +190,13 @@ const Navbar = () => {
               </div>
 
               <div className="flex flex-col items-center w-full mt-2">
-                <button
+                <Link
+                  to="/job-abroad"
                   className="flex items-center justify-center gap-2 text-xl font-medium text-primary pb-2 w-full max-w-[200px]"
-                  onClick={() => setMobileJobOpen(!mobileJobOpen)}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Job Abroad
-                  <ChevronDown
-                    className={`w-6 h-6 transition-transform duration-300 ${mobileJobOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                <div
-                  className={`flex flex-col items-center overflow-hidden transition-all duration-300 w-full ${mobileJobOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}
-                >
-                  <div className="flex flex-col gap-3 w-full max-w-[250px]">
-                    {siteData.jobAbroad.map((country) => (
-                      <Link
-                        key={country.id}
-                        to={`/job-abroad/${country.id}`}
-                        className="flex items-center gap-3 bg-primary/5 px-4 py-3 rounded-lg text-primary hover:bg-primary hover:text-white transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <img
-                          src={country.flag}
-                          alt={country.name}
-                          className="w-6 h-4 object-cover rounded-sm shadow-sm"
-                        />
-                        <span className="text-base font-medium">{country.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+                </Link>
               </div>
 
               <Link

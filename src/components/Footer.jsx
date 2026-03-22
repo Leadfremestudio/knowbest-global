@@ -8,6 +8,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import logo from "../assets/images/knowbest-global-logo.png";
+import { siteData } from "../data/data";
 
 const Footer = () => {
   return (
@@ -29,8 +30,7 @@ const Footer = () => {
             </span>
           </Link>
           <p className="text-sm leading-relaxed max-w-xs">
-            Guiding you towards world-class education and promising career
-            opportunities abroad. Dream big, we handle the rest.
+            Elevating your ambitions into global success with expert guidance and trusted excellence.
           </p>
           <div className="flex gap-4">
             <a
@@ -54,115 +54,68 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div>
+        {/* Quick Links & Study Abroad */}
+        <div className="md:col-span-1">
           <h4 className="text-lg font-semibold text-light mb-6">Quick Links</h4>
-          <ul className="flex flex-col gap-3 text-sm">
-            <li>
-              <Link to="/" className="hover:text-accent transition-colors">
-                Home
-              </Link>
-            </li>
-            <li>
+          <div className="flex flex-wrap gap-2 mb-8">
+            <Link to="/" className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent">
+              Home
+            </Link>
+            <Link to="/#about" className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent">
+              About Us
+            </Link>
+            <Link
+              to="/#contact"
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+            >
+              Contact Us
+            </Link>
+          </div>
+
+          <h4 className="text-lg font-semibold text-light mb-6">Study Abroad</h4>
+          <div className="flex flex-wrap gap-2">
+            {siteData.studyAbroad.map((country) => (
               <Link
-                to="/#about"
-                className="hover:text-accent transition-colors"
+                key={country.id}
+                to={`/study-abroad/${country.id}`}
+                className="px-3 py-1.5 bg-secondary/50 hover:bg-accent hover:text-primary rounded-full text-[11px] transition-all border border-white/5 hover:border-accent"
               >
-                About Us
+                {country.name}
               </Link>
-            </li>
-            <li>
-              <Link
-                to="/study-abroad/uk"
-                className="hover:text-accent transition-colors"
-              >
-                Study in UK
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/study-abroad/us"
-                className="hover:text-accent transition-colors"
-              >
-                Study in USA
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/study-abroad/canada"
-                className="hover:text-accent transition-colors"
-              >
-                Study in Canada
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/study-abroad/ukraine"
-                className="hover:text-accent transition-colors"
-              >
-                Study in Ukraine
-              </Link>
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
 
-        {/* Quick Links Job */}
-        <div>
+        {/* Job Abroad */}
+        <div className="md:col-span-1">
           <h4 className="text-lg font-semibold text-light mb-6">Job Abroad</h4>
-          <ul className="flex flex-col gap-3 text-sm">
-            <li>
-              <Link
-                to="/job-abroad/uk"
-                className="hover:text-accent transition-colors"
-              >
-                Work in UK
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/job-abroad/us"
-                className="hover:text-accent transition-colors"
-              >
-                Work in USA
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/job-abroad/canada"
-                className="hover:text-accent transition-colors"
-              >
-                Work in Canada
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/job-abroad/ukraine"
-                className="hover:text-accent transition-colors"
-              >
-                Work in Ukraine
-              </Link>
-            </li>
-          </ul>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              to="/job-abroad"
+              className="px-3 py-1.5 bg-secondary/50 hover:bg-accent hover:text-primary rounded-full text-[11px] transition-all border border-white/5 hover:border-accent"
+            >
+              All Jobs
+            </Link>
+          </div>
         </div>
 
         {/* Contact Info */}
-        {/* Contact Info */}
-        <div>
-          <h4 className="text-lg font-semibold text-light mb-6">Contact Us</h4>
+        <div className="md:col-span-1">
+          <h4 className="text-lg font-semibold text-light mb-6 text-center md:text-left">Get In Touch</h4>
           <ul className="flex flex-col gap-4 text-sm">
-            <li className="flex items-start gap-3">
+            <li className="flex items-start gap-3 justify-center md:justify-start">
               <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
-              <span>
+              <span className="text-center md:text-left">
                 123 Global Way, Metro Business Park,
                 <br />
                 New York, NY 10001
               </span>
             </li>
-            <li className="flex items-center gap-3">
+            <li className="flex items-center gap-3 justify-center md:justify-start">
               <Phone size={18} className="text-accent shrink-0" />
               <span>+1 (555) 123-4567</span>
             </li>
-            <li className="flex items-center gap-3">
+            <li className="flex items-center gap-3 justify-center md:justify-start">
               <Mail size={18} className="text-accent shrink-0" />
               <span>contact@knowbestglobal.com</span>
             </li>

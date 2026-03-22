@@ -2,29 +2,41 @@ import { useRef, useEffect } from "react";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 
-const CourseAccordion = ({ title, items, isOpen, onClick }) => {
+const CourseAccordion = ({
+  title,
+  items,
+  isOpen,
+  onClick,
+  className = "",
+  countryName = "",
+  isJob = false,
+}) => {
   const contentRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen) {
-      gsap.to(contentRef.current, {
-        height: "auto",
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    } else {
-      gsap.to(contentRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.inOut",
-      });
-    }
+    const ctx = gsap.context(() => {
+      if (isOpen) {
+        gsap.to(contentRef.current, {
+          height: "auto",
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(contentRef.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+      }
+    });
+
+    return () => ctx.revert();
   }, [isOpen]);
 
   return (
-    <div className="border border-primary rounded-xl overflow-hidden bg-primary mb-4 transition-all shadow-md hover:shadow-lg">
+    <div className={`border border-primary rounded-xl overflow-hidden bg-primary mb-4 transition-all shadow-md hover:shadow-lg ${className}`}>
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none group bg-primary relative z-10"
@@ -60,6 +72,25 @@ const CourseAccordion = ({ title, items, isOpen, onClick }) => {
               </li>
             ))}
           </ul>
+
+          <div className="mt-8 pt-6 border-t border-accent/10">
+            <a
+              href={`https://wa.me/1234567890?text=${encodeURIComponent(
+                `Hello Knowbest Global, I'm interested in the ${title} ${isJob ? "job sector" : "program"} in ${countryName}. Please share more details.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-xl font-bold hover:bg-white transition-all shadow-md group/btn"
+            >
+              Apply Now
+              <div className="bg-primary text-accent rounded-full p-1 group-hover/btn:bg-secondary group-hover/btn:text-white transition-all duration-300">
+                <ArrowRight
+                  size={14}
+                  className="group-hover/btn:translate-x-0.5 transition-transform"
+                />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
