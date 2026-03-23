@@ -62,7 +62,7 @@ const Hero = () => {
 
         <div className="relative z-10 w-full flex flex-col items-center justify-end text-center px-6 h-full pb-[6%] mt-0">
           <div className="w-full max-w-5xl text-center z-20 will-change-transform">
-            <h2 className="hero-title text-2xl md:text-4xl lg:text-[3.5rem] font-bold leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0 drop-shadow-md">
+            <h2 className="hero-title text-4xl md:text-4xl lg:text-[3.5rem] font-bold leading-[1.1] mb-6 text-white tracking-tight will-change-transform opacity-0 drop-shadow-md">
               Your Future Abroad
               <br />
               Starts with the Right Guidance
