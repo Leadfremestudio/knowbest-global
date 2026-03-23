@@ -4,6 +4,12 @@ import { MessageCircle, FileText, X } from "lucide-react";
 const FloatingActions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetCountry, setTargetCountry] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
 
   useEffect(() => {
     const handleOpenInquiry = (e) => {
@@ -15,6 +21,42 @@ const FloatingActions = () => {
     window.addEventListener("open-inquiry", handleOpenInquiry);
     return () => window.removeEventListener("open-inquiry", handleOpenInquiry);
   }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    
+    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdPToBjw_xj8BzMPNk-IrKQ2EuUSS-b-bDRLbxGdIfFlQc5iw/formResponse";
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("entry.440689354", formData.name);
+    formDataToSubmit.append("entry.526440436", formData.email);
+    formDataToSubmit.append("entry.1211320039", targetCountry);
+    formDataToSubmit.append("entry.1609211582", formData.message);
+
+    fetch(googleFormUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formDataToSubmit,
+    })
+      .then(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTargetCountry("");
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setStatus("idle");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Error submitting inquiry:", error);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      });
+  };
 
   return (
     <>
@@ -35,7 +77,7 @@ const FloatingActions = () => {
         </button>
 
         <a
-          href="https://wa.me/1234567890"
+          href="https://wa.me/919789184846"
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover border border-accent transition-all group relative"
@@ -72,13 +114,17 @@ const FloatingActions = () => {
               you shortly.
             </p>
 
-            <form className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
                 <label className="block text-sm font-medium mb-1">
                   Full Name
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                   placeholder="John Doe"
                 />
@@ -90,6 +136,9 @@ const FloatingActions = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                   placeholder="john@example.com"
@@ -102,6 +151,7 @@ const FloatingActions = () => {
                 </label>
                 <input
                   type="text"
+                  name="targetCountry"
                   value={targetCountry}
                   onChange={(e) => setTargetCountry(e.target.value)}
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
@@ -114,6 +164,10 @@ const FloatingActions = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   rows="3"
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
                   placeholder="What courses are you interested in?"
@@ -122,9 +176,19 @@ const FloatingActions = () => {
 
               <button
                 type="submit"
-                className="w-full bg-accent text-primary font-bold py-3 rounded-lg mt-2 hover:bg-accent-hover transition-colors shadow-md"
+                disabled={status === "loading" || status === "success"}
+                className={`w-full font-bold py-3 rounded-lg mt-2 transition-all shadow-md active:scale-95 disabled:scale-100 disabled:cursor-not-allowed ${
+                  status === "success" 
+                    ? "bg-green-600 text-white" 
+                    : status === "error" 
+                    ? "bg-red-600 text-white"
+                    : "bg-accent text-primary hover:bg-accent-hover"
+                }`}
               >
-                Submit Inquiry
+                {status === "idle" && "Submit Inquiry"}
+                {status === "loading" && "Sending..."}
+                {status === "success" && "Success! We'll contact you soon"}
+                {status === "error" && "Error! Try Again"}
               </button>
             </form>
           </div>

@@ -69,7 +69,7 @@ const CountryDetail = () => {
           </h1>
 
           <div
-            className="flex flex-wrap justify-center items-center gap-1.5 md:gap-2 text-sm md:text-base max-[450px]:text-[11px] text-light/70 uppercase tracking-widest font-medium animate-fade-in-up"
+            className="flex flex-wrap justify-center items-center gap-1.5 md:gap-2 text-sm md:text-base max-[450px]:text-[11px] text-light/70 uppercase tracking-widest font-medium animate-fade-in-up bg-white/5 backdrop-blur-md px-6 py-2 rounded-full border border-white/10"
             style={{ animationDelay: "0.2s" }}
           >
             <Link to="/" className="hover:text-accent transition-colors">

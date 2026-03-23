@@ -76,13 +76,13 @@ const Navbar = () => {
                   scrolled ? "h-10 md:h-12" : "h-12 md:h-14"
                 }`}
               />
-              <span className="font-bold text-primary text-xl hidden lg:block tracking-tight">
+              <span className="font-bold text-primary text-lg md:text-xl tracking-tight">
                 Knowbest Global
               </span>
             </Link>
 
             {/* Desktop Nav Right */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8 justify-end flex-1 pr-6 z-10 w-max">
+            <nav className="hidden lg:flex items-center gap-6 lg:gap-8 justify-end flex-1 pr-6 z-10 w-max">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -120,7 +120,7 @@ const Navbar = () => {
             </nav>
 
             {/* Contact Button Right */}
-            <div className="hidden md:flex z-50 justify-end items-center">
+            <div className="hidden lg:flex z-50 justify-end items-center">
               <Link
                 to="/#contact"
                 className="flex items-center gap-2 bg-transparent border border-primary/20 hover:bg-primary/5 text-primary px-5 py-2 rounded-full font-bold text-[15px] transition-all duration-300"
@@ -135,7 +135,7 @@ const Navbar = () => {
 
             {/* Mobile Nav Toggle */}
             <button
-              className="md:hidden z-50 p-2 text-primary"
+              className="lg:hidden z-50 p-2 text-primary"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -143,7 +143,7 @@ const Navbar = () => {
 
             {/* Mobile Nav Overlay */}
             <div
-              className={`fixed -top-4 -left-4 w-[100vw] h-[100vh] bg-white z-40 md:hidden transition-transform duration-300 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"} flex flex-col items-center pt-28 pb-8 overflow-y-auto`}
+              className={`fixed -top-4 -left-4 w-[100vw] h-[100vh] bg-white z-40 lg:hidden transition-transform duration-300 ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"} flex flex-col items-center pt-28 pb-8 overflow-y-auto`}
             >
               <div className="flex flex-col items-center justify-start gap-6 w-full px-6 flex-1">
               {navLinks.map((link) => (

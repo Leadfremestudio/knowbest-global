@@ -9,6 +9,7 @@ const ContactForm = () => {
     targetCountries: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,9 +17,30 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    alert("Thank you! Your message has been sent successfully.");
-    setFormData({ name: "", email: "", targetCountries: "", message: "" });
+    setStatus("loading");
+    
+    const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdPToBjw_xj8BzMPNk-IrKQ2EuUSS-b-bDRLbxGdIfFlQc5iw/formResponse";
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("entry.440689354", formData.name);
+    formDataToSubmit.append("entry.526440436", formData.email);
+    formDataToSubmit.append("entry.1211320039", formData.targetCountries);
+    formDataToSubmit.append("entry.1609211582", formData.message);
+
+    fetch(googleFormUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formDataToSubmit,
+    })
+      .then(() => {
+        setStatus("success");
+        setFormData({ name: "", email: "", targetCountries: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      });
   };
 
   return (
@@ -91,9 +113,19 @@ const ContactForm = () => {
                 <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center gap-4 md:gap-6 reveal-item-child">
                   <button
                     type="submit"
-                    className="bg-primary text-white px-8 py-3.5 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg hover:bg-black transition-all shadow-lg active:scale-95"
+                    disabled={status === "loading" || status === "success"}
+                    className={`px-8 py-3.5 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all shadow-lg active:scale-95 disabled:scale-100 disabled:cursor-not-allowed ${
+                      status === "success" 
+                        ? "bg-green-600 text-white" 
+                        : status === "error" 
+                        ? "bg-red-600 text-white"
+                        : "bg-primary text-white hover:bg-black"
+                    }`}
                   >
-                    Send Message
+                    {status === "idle" && "Send Message"}
+                    {status === "loading" && "Sending..."}
+                    {status === "success" && "Message Sent Successfully!"}
+                    {status === "error" && "Error! Try Again"}
                   </button>
                 </div>
               </form>

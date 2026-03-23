@@ -75,7 +75,7 @@ const CourseAccordion = ({
 
           <div className="mt-8 pt-6 border-t border-accent/10">
             <a
-              href={`https://wa.me/1234567890?text=${encodeURIComponent(
+              href={`https://wa.me/919789184846?text=${encodeURIComponent(
                 `Hello Knowbest Global, I'm interested in the ${title} ${isJob ? "job sector" : "program"} in ${countryName}. Please share more details.`
               )}`}
               target="_blank"
