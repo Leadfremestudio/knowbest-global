@@ -7,43 +7,42 @@ const Hero = () => {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    // Parallax hero effect with hardware acceleration
-    const parallax = gsap.to(heroRef.current, {
-      yPercent: 15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".hero-container",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+    const ctx = gsap.context(() => {
+      // Parallax hero effect
+      gsap.to(heroRef.current, {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero-container",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
 
-    // High performance GSAP animation sequence for hero content
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      // Timeline for content
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.fromTo(
-      ".hero-title",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, delay: 0.2 },
-    )
-      .fromTo(
-        ".hero-subtitle",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        "-=0.4",
+      tl.fromTo(
+        ".hero-title",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.2 },
       )
-      .fromTo(
-        ".hero-btn",
-        { opacity: 0, scale: 0.98, y: 15 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.5 },
-        "-=0.3",
-      );
+        .fromTo(
+          ".hero-subtitle",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          "-=0.4",
+        )
+        .fromTo(
+          ".hero-btn",
+          { opacity: 0, scale: 0.98, y: 15 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5 },
+          "-=0.3",
+        );
+    }, ".hero-container"); // Scope selectors to hero-container
 
-    return () => {
-      parallax.scrollTrigger?.kill();
-      tl.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (

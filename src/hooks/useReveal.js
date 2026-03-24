@@ -66,84 +66,99 @@ export const useReveal = (scopeRef, dependencies = []) => {
   useEffect(() => {
     if (!scopeRef.current) return;
 
-    const ctx = gsap.context(() => {
-      // Staggered fade up for sections
-      const sections = gsap.utils.toArray(".fade-up-section");
-      sections.forEach((section) => {
-        gsap.fromTo(
-          section,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 85%",
-              toggleActions: "play none none none",
+    let ctx;
+    
+    // Using requestAnimationFrame to ensure React has finished rendering to the DOM
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        // Staggered fade up for sections
+        const sections = gsap.utils.toArray(".fade-up-section", scopeRef.current);
+        sections.forEach((section) => {
+          gsap.fromTo(
+            section,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
             },
-          },
-        );
-      });
-
-      // Individual Reveal Items
-      document.querySelectorAll(".reveal-item").forEach((item) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      });
-
-      // Staggered groups
-      document.querySelectorAll(".reveal-group").forEach((group) => {
-        gsap.fromTo(
-          group.querySelectorAll(".reveal-item-child"),
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: group,
-              start: "top 85%",
-            },
-          },
-        );
-      });
-
-      // Animated Titles with Text Splitting
-      document.querySelectorAll(".animated-title").forEach((title) => {
-        splitText(title);
-
-        gsap.to(title.querySelectorAll("span"), {
-          scrollTrigger: {
-            trigger: title,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-          stagger: 0.05,
+          );
         });
-      });
-    }, scopeRef);
 
-    return () => ctx.revert();
+        // Individual Reveal Items
+        gsap.utils.toArray(".reveal-item", scopeRef.current).forEach((item) => {
+          gsap.fromTo(
+            item,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            },
+          );
+        });
+
+        // Staggered groups
+        gsap.utils.toArray(".reveal-group", scopeRef.current).forEach((group) => {
+          gsap.fromTo(
+            group.querySelectorAll(".reveal-item-child"),
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.15,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: group,
+                start: "top 85%",
+              },
+            },
+          );
+        });
+
+        // Animated Titles with Text Splitting
+        gsap.utils.toArray(".animated-title", scopeRef.current).forEach((title) => {
+          splitText(title);
+
+          gsap.to(title.querySelectorAll("span"), {
+            scrollTrigger: {
+              trigger: title,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+            stagger: 0.05,
+          });
+        });
+
+        // Initial refresh
+        ScrollTrigger.refresh();
+      }, scopeRef);
+
+      // Safe guard: refresh ScrollTrigger after intervals
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+      setTimeout(() => ScrollTrigger.refresh(), 500);
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, [scopeRef, ...dependencies]);
 };

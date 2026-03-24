@@ -4,11 +4,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FloatingActions from "./components/FloatingActions";
 
-// Lazy Load Pages
-const Home = lazy(() => import("./pages/Home"));
-const CountryDetail = lazy(() => import("./pages/CountryDetail"));
-const JobDetail = lazy(() => import("./pages/JobDetail"));
-const Jobs = lazy(() => import("./pages/Jobs"));
+import Home from "./pages/Home";
+import CountryDetail from "./pages/CountryDetail";
+import JobDetail from "./pages/JobDetail";
+import Jobs from "./pages/Jobs";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Loading Component
 const PageLoader = () => (
@@ -20,6 +20,7 @@ const PageLoader = () => (
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

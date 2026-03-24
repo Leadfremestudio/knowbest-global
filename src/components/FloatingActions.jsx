@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { MessageCircle, FileText, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const FloatingActions = () => {
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetCountry, setTargetCountry] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -61,37 +64,39 @@ const FloatingActions = () => {
   return (
     <>
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] translate-y-0 opacity-100">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover transition-all group relative border border-accent"
-          aria-label="Submit Inquiry"
-        >
-          <FileText
-            size={24}
-            className="group-hover:-translate-y-0.5 transition-transform"
-          />
-          <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
-            Quick Inquiry
-          </span>
-        </button>
+      {location.pathname === "/" && (
+        <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-40 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] translate-y-0 opacity-100">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover transition-all group relative border border-accent"
+            aria-label="Submit Inquiry"
+          >
+            <FileText
+              size={24}
+              className="group-hover:-translate-y-0.5 transition-transform"
+            />
+            <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
+              Quick Inquiry
+            </span>
+          </button>
 
-        <a
-          href="https://wa.me/919789184846"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover border border-accent transition-all group relative"
-          aria-label="Chat on WhatsApp"
-        >
-          <MessageCircle
-            size={28}
-            className="group-hover:-translate-y-0.5 transition-transform"
-          />
-          <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
-            Chat with us
-          </span>
-        </a>
-      </div>
+          <a
+            href="https://wa.me/919789184846"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover border border-accent transition-all group relative"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle
+              size={28}
+              className="group-hover:-translate-y-0.5 transition-transform"
+            />
+            <span className="absolute right-full mr-4 bg-accent text-primary px-3 py-1.5 rounded-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-accent">
+              Chat with us
+            </span>
+          </a>
+        </div>
+      )}
 
       {/* Inquiry Modal */}
       {isModalOpen && (

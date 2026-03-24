@@ -6,44 +6,6 @@ import australiaHero from "../assets/images/countries/australia-hero.webp";
 
 export const studyAbroad = [
   {
-    id: "uk",
-    name: "United Kingdom",
-    flag: "https://flagcdn.com/w80/gb.png",
-    heroImage: ukHero,
-    description:
-      "Experience world-class education in the UK with globally recognized degrees, rich history, and vibrant student life.",
-    courses: [
-      {
-        courseName: "Medicine",
-        details: ["University of Oxford", "Imperial College London", "University of Edinburgh"],
-      },
-      {
-        courseName: "Dentistry",
-        details: ["University of Cambridge", "University College London", "University of Manchester"],
-      },
-      {
-        courseName: "Nursing",
-        details: ["King's College London", "University of Edinburgh", "University of Southampton"],
-      },
-      {
-        courseName: "Pharmacy",
-        details: ["University of Nottingham", "University College London", "Cardiff University"],
-      },
-      {
-        courseName: "Veterinary medicine",
-        details: ["Royal Veterinary College", "University of Cambridge", "University of Liverpool"],
-      },
-      {
-        courseName: "MBA",
-        details: ["London Business School", "University of Oxford (Saïd)", "University of Cambridge (Judge)"],
-      },
-      {
-        courseName: "Engineering",
-        details: ["University of Cambridge", "Imperial College London", "University of Bristol"],
-      },
-    ],
-  },
-  {
     id: "us",
     name: "United States",
     flag: "https://flagcdn.com/w80/us.png",
@@ -52,34 +14,140 @@ export const studyAbroad = [
       "Study in the United States to unlock access to cutting-edge research, a vast network of professionals, and a diverse culture.",
     courses: [
       {
-        courseName: "Medicine",
-        details: ["Harvard University", "Johns Hopkins University", "Stanford University"],
-      },
-      {
-        courseName: "Dentistry",
-        details: ["University of Michigan", "Harvard University", "University of North Carolina"],
-      },
-      {
-        courseName: "Nursing",
-        details: ["University of Pennsylvania", "Johns Hopkins University", "University of Washington"],
-      },
-      {
-        courseName: "Pharmacy",
-        details: ["University of North Carolina", "University of California, San Francisco", "University of Minnesota"],
-      },
-      {
-        courseName: "Veterinary medicine",
-        details: ["University of California, Davis", "Cornell University", "Colorado State University"],
-      },
-      {
         courseName: "MBA",
-        details: ["Harvard Business School", "Stanford Graduate School of Business", "The Wharton School (UPenn)"],
+        details: [
+          {
+            university: "Massachusetts Institute of Technology (MIT)",
+            description: "The Massachusetts Institute of Technology (MIT), founded in 1861 in Cambridge, Massachusetts, is one of the world’s leading private universities. MIT is globally recognized for its cutting-edge research, innovation, and strong focus on STEM fields. The campus spans 166 acres, divided into academic and residential areas, and it attracts top students and researchers worldwide.",
+            duration: "2 years (full-time)",
+            fees: "~CAD 130,000 – CAD 140,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0+",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "Harvard University",
+            description: "Harvard University, founded in 1636 in Cambridge, Massachusetts, is the oldest higher education institution in the USA. It is renowned for its academic excellence, extensive research, and global influence. Harvard has multiple schools, including Harvard Business School, and attracts students from all over the world.",
+            duration: "2 years (full-time)",
+            fees: "~CAD 140,000 – CAD 150,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–5 years of work experience",
+              "IELTS: 7.0+",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "Stanford University",
+            description: "Stanford University, founded in 1885 in Stanford, California, is a top-ranked private university known for innovation, research, and entrepreneurship. It is located in the heart of Silicon Valley and has strong programs in Business, Engineering, and Technology.",
+            duration: "2 years (full-time)",
+            fees: "~CAD 135,000 – CAD 145,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0+",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "California Institute of Technology (Caltech)",
+            description: "Caltech, founded in 1891 in Pasadena, California, is a small but highly prestigious private university focused on Science, Technology, and Engineering. It is known for groundbreaking research and high faculty-to-student ratios, attracting top talent worldwide.",
+            duration: "2 years (full-time, limited spots)",
+            fees: "~CAD 120,000 – CAD 130,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0+",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "University of Pennsylvania (UPenn)",
+            description: "The University of Pennsylvania (UPenn), founded in 1740 in Philadelphia, Pennsylvania, is an Ivy League university known for its strong programs in Business (Wharton School), Engineering, and Law. It combines academic rigor with real-world experience and global career opportunities.",
+            duration: "2 years (full-time)",
+            fees: "~CAD 140,000 – CAD 150,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–5 years of work experience",
+              "IELTS: 7.0+",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          }
+        ]
       },
       {
         courseName: "Engineering",
-        details: ["Massachusetts Institute of Technology (MIT)", "Stanford University", "University of California, Berkeley"],
-      },
-    ],
+        details: [
+          {
+            university: "Massachusetts Institute of Technology (MIT)",
+            description: "The Massachusetts Institute of Technology (MIT), founded in 1861 in Cambridge, Massachusetts, is one of the world’s leading private universities. MIT is globally recognized for its cutting-edge research, innovation, and strong focus on STEM fields.",
+            duration: "Master's: 1–2 years, Undergraduate (BEng/BSc): 4 years",
+            fees: "~CAD 100,000 – CAD 115,000",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance",
+              "IELTS: 6.5–7.5",
+              "GRE (required for some programs)"
+            ]
+          },
+          {
+            university: "Harvard University",
+            description: "Harvard University, founded in 1636 in Cambridge, Massachusetts, is the oldest higher education institution in the USA. It is renowned for its academic excellence, extensive research, and global influence.",
+            duration: "Master's: 1–2 years, Undergraduate (BSc/BE): 4 years",
+            fees: "~CAD 105,000 – CAD 115,000",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance",
+              "IELTS: 6.5–7.5",
+              "GRE (optional for some programs)"
+            ]
+          },
+          {
+            university: "Stanford University",
+            description: "Stanford University, founded in 1885 in Stanford, California, is a top-ranked private university known for innovation, research, and entrepreneurship.",
+            duration: "Master's: 1–2 years, Undergraduate (BEng/BSc): 4 years",
+            fees: "~CAD 100,000 – CAD 120,000",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance",
+              "IELTS: 6.5–7.5",
+              "GRE (required for some programs)"
+            ]
+          },
+          {
+            university: "California Institute of Technology (Caltech)",
+            description: "Caltech, founded in 1891 in Pasadena, California, is a small but highly prestigious private university focused on Science, Technology, and Engineering.",
+            duration: "Master's: 1–2 years, Undergraduate (BEng/BSc): 4 years",
+            fees: "~CAD 95,000 – CAD 110,000",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance",
+              "IELTS: 6.5–7.5",
+              "GRE (required for some programs)"
+            ]
+          },
+          {
+            university: "University of Pennsylvania (UPenn)",
+            description: "The University of Pennsylvania (UPenn), founded in 1740 in Philadelphia, Pennsylvania, is an Ivy League university known for its strong programs in Business (Wharton School), Engineering, and Law.",
+            duration: "Master's: 1–2 years, Undergraduate (BEng/BSc): 4 years",
+            fees: "~CAD 105,000 – CAD 115,000",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance",
+              "IELTS: 6.5–7.5"
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     id: "canada",
@@ -90,72 +158,285 @@ export const studyAbroad = [
       "A welcoming country with excellent academic institutions, high quality of life, and easy pathways to post-graduation work.",
     courses: [
       {
-        courseName: "Medicine",
-        details: ["University of Toronto", "McGill University", "University of British Columbia"],
-      },
-      {
-        courseName: "Dentistry",
-        details: ["University of Toronto", "University of British Columbia", "University of Alberta"],
-      },
-      {
-        courseName: "Nursing",
-        details: ["University of Toronto", "University of Alberta", "University of British Columbia"],
-      },
-      {
-        courseName: "Pharmacy",
-        details: ["University of Toronto", "University of British Columbia", "University of Alberta"],
-      },
-      {
-        courseName: "Veterinary medicine",
-        details: ["University of Guelph (OVC)", "University of Calgary", "University of Montreal"],
-      },
-      {
         courseName: "MBA",
-        details: ["Rotman School of Management", "Ivey Business School", "Desautels Faculty of Management"],
+        details: [
+          {
+            university: "University of Toronto",
+            description: "The University of Toronto, founded in 1827 in Toronto, is Canada’s largest and most prestigious university. It is globally recognised for research excellence and offers top-ranked programs in Business, Engineering, Medicine, and Arts.",
+            duration: "16–20 months (full-time)",
+            fees: "~CAD 60,000 – 70,000",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "2–5 years of work experience",
+              "GMAT/GRE required",
+              "IELTS: 7.0+",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "McGill University",
+            description: "McGill University, founded in 1821 in Montreal, is one of Canada’s most internationally recognized universities. It combines high academic standards with a multicultural environment and offers strong programs in Business, Engineering, Medicine, and Arts.",
+            duration: "20 months (full-time)",
+            fees: "~CAD 55,000 – 65,000",
+            eligibility: [
+              "Bachelor’s degree",
+              "2–5 years of work experience",
+              "GMAT/GRE required",
+              "IELTS: 7.0+",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "University of British Columbia (UBC)",
+            description: "Founded in 1908 in Vancouver, UBC is a top-ranked research university with a global reputation for innovation and sustainability. It offers programs in Engineering, Business, Life Sciences, and Arts.",
+            duration: "16 months (full-time)",
+            fees: "~CAD 55,000 – 65,000",
+            eligibility: [
+              "Bachelor’s degree",
+              "2–5 years of work experience",
+              "GMAT/GRE required",
+              "IELTS: 7.0+",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "Université de Montréal",
+            description: "Université de Montréal, founded in 1878 in Montreal, is a leading French-language university with strong programs in Engineering, Business, Science, and Arts.",
+            duration: "16–20 months",
+            fees: "~CAD 35,000 – 45,000",
+            eligibility: [
+              "Bachelor’s degree",
+              "Work experience",
+              "SOP and LOR",
+              "French or English proficiency may be required"
+            ]
+          },
+          {
+            university: "University of Alberta",
+            description: "The University of Alberta, founded in 1908 in Edmonton, is one of Canada’s top research-intensive universities, particularly strong in Engineering, Business, and Science.",
+            duration: "2 years (full-time)",
+            fees: "~CAD 45,000 – 55,000",
+            eligibility: [
+              "Bachelor’s degree",
+              "Work experience",
+              "GMAT/GRE required",
+              "IELTS: 7.0+",
+              "SOP and LOR"
+            ]
+          }
+        ]
       },
       {
         courseName: "Engineering",
-        details: ["University of Waterloo", "University of Toronto", "University of British Columbia"],
-      },
-    ],
+        details: [
+          {
+            university: "University of Toronto",
+            description: "The University of Toronto, founded in 1827 in Toronto, is Canada’s largest and most prestigious university.",
+            duration: "1–2 years (Master’s), 4 years (Undergraduate)",
+            fees: "~CAD 40,000 – 55,000",
+            eligibility: [
+              "Relevant Bachelor’s degree (for Master’s)",
+              "Strong academic record",
+              "IELTS: 6.5–7.0",
+              "GRE required for some programs"
+            ]
+          },
+          {
+            university: "McGill University",
+            description: "McGill University, founded in 1821 in Montreal, is one of Canada’s most internationally recognized universities.",
+            duration: "1–2 years (Master’s), 4 years (Undergraduate)",
+            fees: "~CAD 35,000 – 50,000",
+            eligibility: [
+              "Relevant Bachelor’s degree",
+              "Strong academic performance",
+              "IELTS: 6.5–7.0",
+              "GRE optional"
+            ]
+          },
+          {
+            university: "University of British Columbia (UBC)",
+            description: "Founded in 1908 in Vancouver, UBC is a top-ranked research university with a global reputation for innovation and sustainability.",
+            duration: "1–2 years (Master’s), 4 years (Undergraduate)",
+            fees: "~CAD 40,000 – 55,000",
+            eligibility: [
+              "Relevant Bachelor’s degree",
+              "Strong academic performance",
+              "IELTS: 6.5–7.0",
+              "GRE optional"
+            ]
+          },
+          {
+            university: "Université de Montréal",
+            description: "Université de Montréal, founded in 1878 in Montreal, is a leading French-language university with strong programs in Engineering, Business, Science, and Arts.",
+            duration: "1–2 years (Master’s), 4 years (Undergraduate)",
+            fees: "~CAD 25,000 – 40,000",
+            eligibility: [
+              "Relevant Bachelor’s degree",
+              "Strong academic background",
+              "French or English proficiency may be required"
+            ]
+          },
+          {
+            university: "University of Alberta",
+            description: "The University of Alberta, founded in 1908 in Edmonton, is one of Canada’s top research-intensive universities, particularly strong in Engineering, Business, and Science.",
+            duration: "1–2 years (Master’s), 4 years (Undergraduate)",
+            fees: "~CAD 35,000 – 50,000",
+            eligibility: [
+              "Relevant Bachelor’s degree",
+              "Strong academic record",
+              "IELTS: 6.5–7.0",
+              "GRE optional"
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
-    id: "germany",
-    name: "Germany",
-    flag: "https://flagcdn.com/w80/de.png",
-    heroImage: germanyHero,
+    id: "uk",
+    name: "United Kingdom",
+    flag: "https://flagcdn.com/w80/gb.png",
+    heroImage: ukHero,
     description:
-      "A recognized destination for medical studies and engineering courses offering high-quality education at affordable costs.",
+      "Experience world-class education in the UK with globally recognized degrees, rich history, and vibrant student life.",
     courses: [
       {
-        courseName: "Medicine",
-        details: ["Heidelberg University", "Charité - Universitätsmedizin Berlin", "LMU Munich"],
-      },
-      {
-        courseName: "Dentistry",
-        details: ["University of Freiburg", "University of Göttingen", "Heidelberg University"],
-      },
-      {
-        courseName: "Nursing",
-        details: ["University of Hamburg", "University of Bremen", "University of Osnabrück"],
-      },
-      {
-        courseName: "Pharmacy",
-        details: ["Heidelberg University", "University of Freiburg", "Goethe University Frankfurt"],
-      },
-      {
-        courseName: "Veterinary medicine",
-        details: ["University of Veterinary Medicine Hanover", "Free University of Berlin", "University of Leipzig"],
-      },
-      {
         courseName: "MBA",
-        details: ["Mannheim Business School", "WHU - Otto Beisheim School of Management", "ESMT Berlin"],
+        details: [
+          {
+            university: "University of Oxford",
+            description: "The University of Oxford is a top university in Oxford, founded in 1096. It is one of the oldest universities in the world. It has 39 colleges that manage their own students and activities. The university buildings are spread across the city instead of one main campus.",
+            duration: "1 year (full-time)",
+            fees: "~CAD 150,000 (approx. £88,800)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0–7.5 (approx.)",
+              "GMAT/GRE required",
+              "Strong SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "University of Cambridge",
+            description: "The University of Cambridge in Cambridge was founded in 1209 and is one of the oldest universities in the world. It has 31 colleges and no single campus, with buildings spread across the city.",
+            duration: "1 year (full-time)",
+            fees: "~CAD 125,000 (approx. £74,000)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0–7.5",
+              "GMAT/GRE required",
+              "Strong SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "University of Edinburgh",
+            description: "The University of Edinburgh in Edinburgh was founded in 1583 and is one of the oldest universities in the English-speaking world. It has five campuses and offers many courses across different fields.",
+            duration: "1 year (full-time)",
+            fees: "~CAD 70,000 – CAD 80,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with good academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (preferred, not always mandatory)",
+              "SOP and LOR required"
+            ]
+          },
+          {
+            university: "Imperial College London",
+            description: "Imperial College London in London was established in 1907 and focuses on medicine, business, technology, and science. It has its main campus in South Kensington, with other campuses and hospitals across the city.",
+            duration: "1 year (full-time)",
+            fees: "~CAD 120,000 – CAD 130,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 7.0 (approx.)",
+              "GMAT/GRE required",
+              "SOP, LOR, and interview"
+            ]
+          },
+          {
+            university: "The University of Manchester",
+            description: "The University of Manchester in Manchester was founded in 1824 and is a well-known public university. It has two campuses and over 40,000 students, including many international students.",
+            duration: "1 year (full-time)",
+            fees: "~CAD 80,000 – CAD 90,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (preferred, not always mandatory)",
+              "SOP and LOR required"
+            ]
+          }
+        ]
       },
       {
         courseName: "Engineering",
-        details: ["Technical University of Munich (TUM)", "RWTH Aachen University", "TU Berlin"],
-      },
-    ],
+        details: [
+          {
+            university: "University of Oxford",
+            description: "The University of Oxford is a top university in Oxford, founded in 1096. It is one of the oldest universities in the world.",
+            duration: "Master's: 1–2 years, Undergraduate (MEng): 4 years",
+            fees: "~CAD 100,000 – CAD 110,000 (approx. £60,000–£63,000)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic scores",
+              "IELTS: 6.5–7.5",
+              "Some programs may require GRE",
+              "Strong academic background in Maths & Science"
+            ]
+          },
+          {
+            university: "University of Cambridge",
+            description: "The University of Cambridge in Cambridge was founded in 1209 and is one of the oldest universities in the world.",
+            duration: "Master's: 1 year, Undergraduate (MEng): 4 years",
+            fees: "~CAD 70,000 – CAD 85,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering (for Master's)",
+              "Strong academic performance (especially in Maths & Science)",
+              "IELTS: 6.5–7.5",
+              "GRE (not always mandatory)",
+              "Strong academic background required"
+            ]
+          },
+          {
+            university: "University of Edinburgh",
+            description: "The University of Edinburgh in Edinburgh was founded in 1583 and is one of the oldest universities in the English-speaking world.",
+            duration: "1–2 years (Master’s)",
+            fees: "~CAD 45,000 – CAD 60,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0",
+              "GRE (optional for most programs)"
+            ]
+          },
+          {
+            university: "Imperial College London",
+            description: "Imperial College London in London was established in 1907 and focuses on medicine, business, technology, and science.",
+            duration: "1 year (Master’s)",
+            fees: "~CAD 60,000 – CAD 75,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic performance",
+              "IELTS: 6.5–7.0",
+              "GRE (optional for most programs)"
+            ]
+          },
+          {
+            university: "The University of Manchester",
+            description: "The University of Manchester in Manchester was founded in 1824 and is a well-known public university.",
+            duration: "1–2 years (Master’s)",
+            fees: "~CAD 40,000 – CAD 55,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0"
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     id: "australia",
@@ -166,33 +447,190 @@ export const studyAbroad = [
       "Australia offers a high quality of life, world-class education, and excellent post-study work opportunities in a diverse and welcoming environment.",
     courses: [
       {
-        courseName: "Medicine",
-        details: ["University of Melbourne", "University of Sydney", "Monash University"],
-      },
-      {
-        courseName: "Dentistry",
-        details: ["University of Adelaide", "University of Melbourne", "University of Sydney"],
-      },
-      {
-        courseName: "Nursing",
-        details: ["University of Technology Sydney (UTS)", "University of Sydney", "Monash University"],
-      },
-      {
-        courseName: "Pharmacy",
-        details: ["Monash University", "University of Sydney", "University of Queensland"],
-      },
-      {
-        courseName: "Veterinary medicine",
-        details: ["University of Sydney", "University of Melbourne", "University of Queensland"],
-      },
-      {
         courseName: "MBA",
-        details: ["Melbourne Business School", "AGSM at UNSW Business School", "University of Sydney Business School"],
+        details: [
+          {
+            university: "Australian National University",
+            description: "The Australian National University in Canberra was founded in 1946 and is one of the top universities in Australia. It is highly ranked globally and known for its strong academics.",
+            duration: "1–2 years (full-time)",
+            fees: "~CAD 60,000 – CAD 70,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (required for most programs)",
+              "SOP and LOR required"
+            ]
+          },
+          {
+            university: "University of Melbourne",
+            description: "The University of Melbourne in Melbourne was founded in 1853 and is one of the oldest universities in Australia. It has over 50,000 students, including many international students, and offers good campus living options.",
+            duration: "1–2 years (full-time)",
+            fees: "~CAD 65,000 – CAD 75,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (required for most programs)",
+              "SOP and LOR required"
+            ]
+          },
+          {
+            university: "University of Sydney",
+            description: "The University of Sydney in Sydney was founded in 1850 and is the oldest university in Australia. It offers a wide range of courses at all levels and has a global reputation for excellence.",
+            duration: "1–2 years (full-time)",
+            fees: "~CAD 60,000 – CAD 70,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (required for most programs)",
+              "SOP and LOR required"
+            ],
+            highlights: [
+              "Ranked among the top 50 globally for MBA programs",
+              "Strong focus on leadership, business strategy, and entrepreneurship",
+              "Excellent industry connections and international career opportunities"
+            ]
+          },
+          {
+            university: "University of New South Wales (UNSW)",
+            description: "The University of New South Wales in Sydney was founded in 1949 and is a top-ranked global university. It has strong international partnerships with universities worldwide.",
+            duration: "1–2 years (full-time)",
+            fees: "~CAD 65,000 – CAD 75,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (required for most programs)",
+              "SOP and LOR required"
+            ],
+            highlights: [
+              "Ranked among the top 50 MBA programs globally",
+              "Strong focus on leadership, innovation, and entrepreneurship",
+              "Excellent industry connections and career opportunities worldwide"
+            ]
+          },
+          {
+            university: "University of Queensland",
+            description: "The University of Queensland in Brisbane was founded in 1909 and is a leading research university. It is part of top university groups like Go8 and Universitas 21.",
+            duration: "1–2 years (full-time)",
+            fees: "~CAD 55,000 – CAD 65,000 (approx.)",
+            eligibility: [
+              "Bachelor’s degree with strong academic performance",
+              "Minimum 2–3 years of work experience",
+              "IELTS: 6.5–7.0",
+              "GMAT/GRE (required for most programs)",
+              "SOP and LOR required"
+            ],
+            highlights: [
+              "Globally recognized top 100 MBA program",
+              "Focus on leadership, innovation, and international business",
+              "Strong networking opportunities and career support"
+            ]
+          }
+        ]
       },
       {
         courseName: "Engineering",
-        details: ["UNSW Sydney", "University of Melbourne", "Monash University"],
-      },
-    ],
+        details: [
+          {
+            university: "Australian National University",
+            description: "The Australian National University in Canberra was founded in 1946 and is one of the top universities in Australia.",
+            duration: "2 years (Master’s)",
+            fees: "~CAD 45,000 – CAD 55,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0"
+            ]
+          },
+          {
+            university: "University of Melbourne",
+            description: "The University of Melbourne in Melbourne was founded in 1853 and is one of the oldest universities in Australia.",
+            duration: "2 years (Master’s)",
+            fees: "~CAD 45,000 – CAD 60,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0"
+            ]
+          },
+          {
+            university: "University of Sydney",
+            description: "The University of Sydney in Sydney was founded in 1850 and is the oldest university in Australia.",
+            duration: "2 years (Master’s)",
+            fees: "~CAD 40,000 – CAD 55,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0",
+              "GRE (optional for most programs)"
+            ],
+            highlights: [
+              "Ranked top 100 worldwide for Engineering & Technology",
+              "Specialisations in Civil, Electrical, Mechanical, Software, and AI",
+              "Access to modern labs and industry-linked projects"
+            ]
+          },
+          {
+            university: "University of New South Wales (UNSW)",
+            description: "The University of New South Wales in Sydney was founded in 1949 and is a top-ranked global university.",
+            duration: "2 years (Master’s)",
+            fees: "~CAD 45,000 – CAD 60,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0",
+              "GRE (optional for most programs)"
+            ],
+            highlights: [
+              "Ranked among the top 50 Engineering programs worldwide",
+              "Offers specializations in Civil, Mechanical, Electrical, Software, and AI",
+              "Access to state-of-the-art labs and industry-linked projects"
+            ]
+          },
+          {
+            university: "University of Queensland",
+            description: "The University of Queensland in Brisbane was founded in 1909 and is a leading research university.",
+            duration: "2 years (Master’s)",
+            fees: "~CAD 40,000 – CAD 55,000 (approx.)",
+            eligibility: [
+              "Relevant Bachelor’s degree in Engineering",
+              "Strong academic background",
+              "IELTS: 6.5–7.0",
+              "GRE (optional for most programs)"
+            ],
+            highlights: [
+              "Ranked top 100 globally for Engineering & Technology",
+              "Specialisations include Civil, Mechanical, Electrical, Software, and AI",
+              "Access to research centres, labs, and industry-linked projects"
+            ]
+          }
+        ]
+      }
+    ]
   },
+  {
+    id: "germany",
+    name: "Germany",
+    flag: "https://flagcdn.com/w80/de.png",
+    heroImage: germanyHero,
+    description:
+      "A recognized destination for medical studies and engineering courses offering high-quality education at affordable costs.",
+    courses: [
+      {
+        courseName: "MBA",
+        details: []
+      },
+      {
+        courseName: "Engineering",
+        details: []
+      },
+      {
+        courseName: "Medical Studies",
+        details: []
+      }
+    ]
+  }
 ];

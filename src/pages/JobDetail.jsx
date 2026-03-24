@@ -7,21 +7,23 @@ import CourseAccordion from "../components/CourseAccordion";
 
 const JobDetail = () => {
   const { country } = useParams();
-  const [countryData, setCountryData] = useState(null);
+  
+  // Find the country in the data synchronously to fix blank reveal on first land
+  const getInitialData = () => {
+    return siteData.jobAbroad.find((c) => c.id === country) || null;
+  };
+
+  const [countryData, setCountryData] = useState(getInitialData);
   const [openAccordion, setOpenAccordion] = useState(null);
   const mainRef = useRef(null);
 
-  // Centralized animation reveal hook
-  useReveal(mainRef, [country]);
-
+  // Re-sync data if country param changes
   useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
-
-    // Find the country in the data
-    const data = siteData.jobAbroad.find((c) => c.id === country);
-    setCountryData(data);
+    setCountryData(getInitialData());
   }, [country]);
+
+  // Centralized animation reveal hook
+  useReveal(mainRef, [country, countryData]);
 
   if (!countryData) {
     return (

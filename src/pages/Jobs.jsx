@@ -12,8 +12,7 @@ const Jobs = () => {
   useReveal(mainRef);
 
   useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
+    // Scroll to top is handled by ScrollToTop component in App.jsx
   }, []);
 
   return (

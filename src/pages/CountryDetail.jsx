@@ -4,24 +4,33 @@ import { ChevronRight } from "lucide-react";
 import { siteData } from "../data/data";
 import { useReveal } from "../hooks/useReveal";
 import CourseAccordion from "../components/CourseAccordion";
+import UniversityModal from "../components/UniversityModal";
 
 const CountryDetail = () => {
   const { country } = useParams();
-  const [countryData, setCountryData] = useState(null);
+  
+  // Find the country data synchronously to avoid empty first render
+  const getInitialData = () => {
+    return siteData.studyAbroad.find((c) => c.id === country) || null;
+  };
+
+  const [countryData, setCountryData] = useState(getInitialData);
   const [openAccordion, setOpenAccordion] = useState(null);
+  const [selectedUniversity, setSelectedUniversity] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentProgram, setCurrentProgram] = useState("");
   const mainRef = useRef(null);
 
-  // Centralized animation reveal hook
-  useReveal(mainRef, [country]);
-
+  // Re-sync data if country param changes
   useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
-
-    // Find the country in the data
-    const data = siteData.studyAbroad.find((c) => c.id === country);
-    setCountryData(data);
+    setCountryData(getInitialData());
   }, [country]);
+
+  // Centralized animation reveal hook
+  useReveal(mainRef, [country, countryData]);
+
+  // Data is synced by the useEffect above
+
 
   if (!countryData) {
     return (
@@ -38,6 +47,12 @@ const CountryDetail = () => {
 
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
+  };
+
+  const handleUniversityClick = (university, programName) => {
+    setSelectedUniversity(university);
+    setCurrentProgram(programName);
+    setIsModalOpen(true);
   };
 
   return (
@@ -129,6 +144,7 @@ const CountryDetail = () => {
                   items={course.details}
                   isOpen={openAccordion === index}
                   onClick={() => toggleAccordion(index)}
+                  onUniversityClick={(uni) => handleUniversityClick(uni, course.courseName)}
                   className="reveal-item-child"
                   countryName={countryData.name}
                 />
@@ -144,6 +160,13 @@ const CountryDetail = () => {
           </div>
         </div>
       </section>
+
+      <UniversityModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        university={selectedUniversity}
+        programName={currentProgram}
+      />
     </div>
   );
 };
