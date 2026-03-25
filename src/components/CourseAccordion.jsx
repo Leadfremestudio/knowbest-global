@@ -54,58 +54,62 @@ const CourseAccordion = ({
 
       <div ref={contentRef} className="h-0 opacity-0 overflow-hidden">
         <div className="p-5 md:p-6 pt-0 border-t border-accent/20 bg-primary">
-          <p className="text-light/80 text-sm mb-4">
-            {isJob ? "Available roles in this sector:" : "Top institutions offering this program:"}
-          </p>
-          <ul className="flex flex-col gap-3">
-            {items.map((item, index) => {
-              const name = typeof item === "string" ? item : item.university;
-              const isSelectable = !isJob && typeof item === "object";
+          {items && items.length > 0 ? (
+            <>
+              <p className="text-light/80 text-sm mb-4">
+                {isJob ? "Available roles in this sector:" : "Top institutions offering this program:"}
+              </p>
+              <ul className="flex flex-col gap-3">
+                {items.map((item, index) => {
+                  const name = typeof item === "string" ? item : item.university;
+                  const isSelectable = !isJob && typeof item === "object";
 
-              return (
-                <li
-                  key={index}
-                  className={`flex items-center gap-3 text-light hover:text-accent transition-colors p-3 rounded-lg hover:bg-secondary/80 group ${
-                    isSelectable ? "cursor-pointer" : ""
-                  }`}
-                  onClick={() => isSelectable && onUniversityClick && onUniversityClick(item)}
+                  return (
+                    <li
+                      key={index}
+                      className={`flex items-center gap-3 text-light hover:text-accent transition-colors p-3 rounded-lg hover:bg-secondary/80 group ${
+                        isSelectable ? "cursor-pointer" : ""
+                      }`}
+                      onClick={() => isSelectable && onUniversityClick && onUniversityClick(item)}
+                    >
+                      <ArrowRight
+                        size={16}
+                        className="text-accent opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300"
+                      />
+                      <span className="font-medium transform group-hover:translate-x-1 transition-transform duration-300">
+                        {name}
+                      </span>
+                      {isSelectable && (
+                        <span className="ml-auto text-[10px] uppercase tracking-tighter text-accent/50 group-hover:text-accent group-hover:scale-110 transition-all border border-accent/20 px-2 py-0.5 rounded-full whitespace-nowrap">
+                          View Details
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
+          ) : (
+            !isJob && (
+              <div className="mt-4 flex flex-wrap gap-4">
+                <a
+                  href={`https://wa.me/919789184846?text=${encodeURIComponent(
+                    `Hello Knowbest Global, I'm interested in the ${title} program in ${countryName}. Please share more details.`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-accent text-primary px-8 py-4 rounded-xl font-bold hover:bg-white transition-all shadow-md group/wa-expert"
                 >
-                  <ArrowRight
-                    size={16}
-                    className="text-accent opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300"
-                  />
-                  <span className="font-medium transform group-hover:translate-x-1 transition-transform duration-300">
-                    {name}
-                  </span>
-                  {isSelectable && (
-                    <span className="ml-auto text-[10px] uppercase tracking-tighter text-accent/50 group-hover:text-accent group-hover:scale-110 transition-all border border-accent/20 px-2 py-0.5 rounded-full whitespace-nowrap">
-                      View Details
-                    </span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-
-          {!isJob && (
-            <div className="mt-8 pt-6 border-t border-accent/10 flex flex-wrap gap-4">
-              <a
-                href={`https://wa.me/919789184846?text=${encodeURIComponent(
-                  `Hello Knowbest Global, I'm interested in the ${title} program in ${countryName}. Please share more details.`,
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-accent text-primary px-8 py-4 rounded-xl font-bold hover:bg-white transition-all shadow-md group/wa-expert"
-              >
-                Consult Expert
-                <div className="bg-primary text-accent rounded-full p-1 group-hover/wa-expert:bg-secondary group-hover/wa-expert:text-white transition-all duration-300">
-                  <ArrowRight
-                    size={14}
-                    className="group-hover/wa-expert:translate-x-0.5 transition-transform"
-                  />
-                </div>
-              </a>
-            </div>
+                  Consult Expert
+                  <div className="bg-primary text-accent rounded-full p-1 group-hover/wa-expert:bg-secondary group-hover/wa-expert:text-white transition-all duration-300">
+                    <ArrowRight
+                      size={14}
+                      className="group-hover/wa-expert:translate-x-0.5 transition-transform"
+                    />
+                  </div>
+                </a>
+              </div>
+            )
           )}
 
           {isJob && (
