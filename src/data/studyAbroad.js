@@ -621,15 +621,228 @@ export const studyAbroad = [
     courses: [
       {
         courseName: "MBA",
-        details: []
+        details: [
+          {
+            university: "Technical University of Munich (TUM)",
+            description: "Founded in 1868 and located in Munich, TUM is one of Europe’s leading universities for engineering, technology, and business. It is known for innovation, research excellence, and strong industry collaborations.",
+            duration: "1–2 years",
+            fees: "€39,000 – €43,000 (total)",
+            eligibility: [
+              "Bachelor’s degree (any discipline)",
+              "2–3 years of work experience",
+              "IELTS 6.5+ / TOEFL equivalent",
+              "GMAT/GRE (required for some programs)",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "Ludwig Maximilians University of Munich (LMU)",
+            description: "Established in 1472, LMU Munich is one of the oldest and most prestigious universities in Europe. It offers over 300 programs and is highly recognised for medicine, science, and humanities.",
+            duration: "1–2 years",
+            fees: "€15,000 – €30,000 (total)",
+            eligibility: [
+              "Bachelor’s degree (any discipline)",
+              "2–3 years of work experience",
+              "IELTS 6.5+ / TOEFL equivalent",
+              "GMAT/GRE (required for some programs)",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "Heidelberg University",
+            description: "Founded in 1386, Heidelberg University is Germany’s oldest university and a global leader in research, especially in medicine and life sciences.",
+            duration: "1–2 years",
+            fees: "€10,000 – €30,000 (total)",
+            eligibility: [
+              "Bachelor’s degree (any discipline)",
+              "2–3 years of work experience",
+              "IELTS 6.5+ / TOEFL equivalent",
+              "GMAT/GRE (required for some programs)",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "Freie University of Berlin",
+            description: "Established in 1948, the Freie Universität Berlin is renowned for its strong international focus and excellence in the humanities, social sciences, and research.",
+            duration: "1–2 years",
+            fees: "€15,000 – €40,000 (total)",
+            eligibility: [
+              "Bachelor’s degree (any discipline)",
+              "Minimum 2–3 years of work experience",
+              "IELTS 6.5+ / TOEFL equivalent",
+              "GMAT/GRE (required for some universities)",
+              "SOP and LOR"
+            ]
+          },
+          {
+            university: "RWTH Aachen University",
+            description: "Founded in 1870, RWTH Aachen is one of Europe’s top technical universities, particularly renowned for engineering and applied sciences.",
+            duration: "1–2 years",
+            fees: "€12,000 – €35,000 (total)",
+            eligibility: [
+              "Bachelor’s degree (any discipline)",
+              "Minimum 2–3 years of work experience",
+              "IELTS 6.5+ / TOEFL equivalent",
+              "GMAT/GRE (required for some programs)",
+              "SOP and LOR"
+            ]
+          }
+        ]
       },
       {
         courseName: "Engineering",
-        details: []
+        details: [
+          {
+            university: "Technical University of Munich (TUM)",
+            description: "Founded in 1868 and located in Munich, TUM is one of Europe’s leading universities for engineering, technology, and business.",
+            duration: "1.5–4 years",
+            fees: "€8,200 – €12,300 (annual)",
+            eligibility: [
+              "Bachelor’s degree in relevant field (for Master’s)",
+              "Strong background in Mathematics and Physics",
+              "IELTS 6.0–6.5 (for English programs)",
+              "German proficiency (B2/C1 for German-taught programs)",
+              "GRE (optional for some programs)"
+            ],
+            highlights: [
+              "Strong partnerships with global companies like BMW, Siemens, and Google",
+              "High employability rate with excellent internship and job opportunities"
+            ]
+          },
+          {
+            university: "Ludwig Maximilians University of Munich (LMU)",
+            description: "Established in 1472, LMU Munich is one of the oldest and most prestigious universities in Europe.",
+            duration: "1.5–4 years",
+            fees: "€300 – €700 (annual)",
+            eligibility: [
+              "Bachelor’s degree in a relevant field (for Master’s)",
+              "Strong background in Mathematics and Physics",
+              "IELTS 6.0–6.5 (for English programs)",
+              "German proficiency (B2/C1 for German-taught programs)",
+              "GRE (optional for some universities)"
+            ],
+            highlights: [
+              "Home to multiple Nobel Prize winners and leading researchers",
+              "Wide range of interdisciplinary programs and research opportunities"
+            ]
+          },
+          {
+            university: "Heidelberg University",
+            description: "Founded in 1386, Heidelberg University is Germany’s oldest university and a global leader in research.",
+            duration: "1.5–4 years",
+            fees: "€3,300 – €3,600 (annual)",
+            eligibility: [
+              "Bachelor’s degree in a relevant field (for Master’s)",
+              "Strong background in Mathematics and Physics",
+              "IELTS 6.0–6.5 (for English programs)",
+              "German proficiency (B2/C1 for German-taught programs)",
+              "GRE (optional for some universities)"
+            ],
+            highlights: [
+              "Strong focus on research-based learning and innovation",
+              "Excellent international collaborations and exchange programs"
+            ]
+          },
+          {
+            university: "Freie University of Berlin",
+            description: "Established in 1948, the Freie Universität Berlin is renowned for its strong international focus and excellence.",
+            duration: "1.5–4 years",
+            fees: "€600 – €700 (annual)",
+            eligibility: [
+              "Bachelor’s degree in a relevant field (for Master’s)",
+              "Strong background in Mathematics and Physics",
+              "IELTS 6.0–6.5 (for English programs)",
+              "German proficiency (B2/C1 for German-taught programs)",
+              "GRE (optional for some universities)"
+            ],
+            highlights: [
+              "Large international student community with global partnerships",
+              "Offers many English-taught postgraduate programs"
+            ]
+          },
+          {
+            university: "RWTH Aachen University",
+            description: "Founded in 1870, RWTH Aachen is one of Europe’s top technical universities, particularly renowned for engineering.",
+            duration: "1.5–4 years",
+            fees: "€600 – €700 (annual)",
+            eligibility: [
+              "Bachelor’s degree in relevant field (for Master’s)",
+              "Strong background in Mathematics and Physics",
+              "IELTS 6.0–6.5 (for English programs)",
+              "German proficiency (B2/C1 for German-taught programs)",
+              "GRE (optional for some programs)"
+            ],
+            highlights: [
+              "Strong industry connections with companies like Bosch and Ford",
+              "Advanced research facilities and practical training opportunities"
+            ]
+          }
+        ]
       },
       {
         courseName: "Medical Studies",
-        details: []
+        details: [
+          {
+            university: "Technical University of Munich (TUM)",
+            description: "Founded in 1868 and located in Munich, TUM offers world-class medical education and research facilities.",
+            duration: "3–6 years",
+            fees: "€4,200 – €6,300 (annual)",
+            eligibility: [
+              "12th grade with strong scores in Biology, Chemistry, and Physics",
+              "High academic performance (competitive admission)",
+              "German language proficiency (C1 level)",
+              "Entrance exam / Studienkolleg may be required"
+            ]
+          },
+          {
+            university: "Ludwig Maximilians University of Munich (LMU)",
+            description: "LMU Munich is highly recognised for medicine and science, being home to multiple Nobel Prize winners.",
+            duration: "3–6 years",
+            fees: "€300 – €700 (annual)",
+            eligibility: [
+              "12th grade with strong scores in Biology, Chemistry, and Physics",
+              "High academic performance (competitive admission)",
+              "German language proficiency (C1 level)",
+              "Studienkolleg / entrance exam may be required"
+            ]
+          },
+          {
+            university: "Heidelberg University",
+            description: "Founded in 1386, Heidelberg University is a global leader in research, especially in medicine and life sciences.",
+            duration: "3–6 years",
+            fees: "€3,300 – €3,600 (annual)",
+            eligibility: [
+              "12th grade with strong scores in Biology, Chemistry, and Physics",
+              "High academic performance (very competitive)",
+              "German language proficiency (C1 level)",
+              "Entrance exam / Studienkolleg may be required"
+            ]
+          },
+          {
+            university: "Freie University of Berlin",
+            description: "Freie Universität Berlin is known for its research excellence in humanities, social sciences, and medicine.",
+            duration: "3–6 years",
+            fees: "€600 – €700 (annual)",
+            eligibility: [
+              "Strong academic background in Biology, Chemistry, and Physics",
+              "12th grade with high scores (especially in Science subjects)",
+              "German language proficiency (C1 level)",
+              "Entrance exams (like TestAS / Studienkolleg may be required)"
+            ]
+          },
+          {
+            university: "RWTH Aachen University",
+            description: "Founded in 1870, RWTH Aachen provides advanced research facilities and practical training in medicine.",
+            duration: "3–6 years",
+            fees: "€600 – €700 (annual)",
+            eligibility: [
+              "12th grade with strong scores in Biology, Chemistry, and Physics",
+              "Excellent academic performance (highly competitive)",
+              "German language proficiency (C1 level)",
+              "Entrance exam / Studienkolleg may be required"
+            ]
+          }
+        ]
       }
     ]
   }
