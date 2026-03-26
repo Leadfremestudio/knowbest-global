@@ -1,4 +1,4 @@
-import { X, Calendar, DollarSign, Euro, PoundSterling, CheckCircle, GraduationCap, Info } from "lucide-react";
+import { X, Calendar, DollarSign, Euro, PoundSterling, CheckCircle, GraduationCap } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -76,12 +76,19 @@ const UniversityModal = ({ isOpen, onClose, university, programName }) => {
               
               <div className="flex items-center gap-4 bg-accent text-primary p-4 rounded-2xl shadow-lg shadow-accent/20">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
-                  {university.fees && university.fees.includes("€") ? <Euro size={22} /> : 
-                   university.fees && university.fees.includes("£") ? <PoundSterling size={22} /> : 
+                  {university.fees && (university.fees.includes("€") || university.fees.includes("EUR")) ? <Euro size={22} /> : 
+                   university.fees && (university.fees.includes("£") || university.fees.includes("GBP")) ? <PoundSterling size={22} /> : 
                    <DollarSign size={22} />}
                 </div>
                 <div>
-                  <p className="text-[10px] text-primary/50 uppercase font-bold tracking-widest">Annual Fees</p>
+                  <p className="text-[10px] text-primary/50 uppercase font-bold tracking-widest uppercase">
+                    {university.fees && (university.fees.includes("GBP") || university.fees.includes("£")) ? "GBP Fees" : 
+                     university.fees && (university.fees.includes("EUR") || university.fees.includes("€")) ? "EUR Fees" : 
+                     university.fees && (university.fees.includes("USD") || university.fees.includes("$")) ? "USD Fees" : 
+                     university.fees && (university.fees.includes("AUD")) ? "AUD Fees" : 
+                     university.fees && (university.fees.includes("CAD")) ? "CAD Fees" : 
+                     "Annual Fees"}
+                  </p>
                   <p className="text-lg font-bold">{university.fees}</p>
                 </div>
               </div>
