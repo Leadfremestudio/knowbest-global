@@ -65,13 +65,13 @@ const Footer = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-lg text-xs transition-all font-medium border border-secondary hover:border-accent"
             >
               Home
             </Link>
             <Link
               to="/#about"
-              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-lg text-xs transition-all font-medium border border-secondary hover:border-accent"
             >
               About Us
             </Link>
@@ -86,9 +86,19 @@ const Footer = () => {
                   }
                 }
               }}
-              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-lg text-xs transition-all font-medium border border-secondary hover:border-accent"
             >
               Contact Us
+            </Link>
+          </div>
+
+          <h4 className="text-lg font-semibold text-light mb-4">Job Abroad</h4>
+          <div className="mb-8">
+            <Link
+              to="/job-abroad"
+              className="inline-block px-4 py-2 bg-secondary/50 hover:bg-accent hover:text-primary rounded-lg text-xs transition-all border border-white/5 hover:border-accent font-medium"
+            >
+              Explore Jobs Abroad
             </Link>
           </div>
 
@@ -100,7 +110,7 @@ const Footer = () => {
               <Link
                 key={country.id}
                 to={`/study-abroad/${country.id}`}
-                className="px-3 py-1.5 bg-secondary/50 hover:bg-accent hover:text-primary rounded-full text-[11px] transition-all border border-white/5 hover:border-accent"
+                className="px-3 py-1.5 bg-secondary/50 hover:bg-accent hover:text-primary rounded-lg text-[11px] transition-all border border-white/5 hover:border-accent"
               >
                 {country.name}
               </Link>
@@ -108,40 +118,56 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Job Abroad */}
+        {/* Head Office */}
         <div className="md:col-span-1">
-          <h4 className="text-lg font-semibold text-light mb-6">Job Abroad</h4>
-          <div className="flex flex-wrap gap-2">
-            <Link
-              to="/job-abroad"
-              className="px-3 py-1.5 bg-secondary/50 hover:bg-accent hover:text-primary rounded-full text-[11px] transition-all border border-white/5 hover:border-accent"
-            >
-              All Jobs
-            </Link>
-          </div>
-        </div>
-
-        {/* Contact Info */}
-        <div className="md:col-span-1">
-          <h4 className="text-lg font-semibold text-light mb-6">
-            Get In Touch
-          </h4>
+          <h4 className="text-lg font-semibold text-light mb-6">Head Office</h4>
           <ul className="flex flex-col gap-4 text-sm">
-            <li className="flex items-start gap-3">
+            <li className="flex items-start gap-3 text-light/80">
               <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
               <span>
-                wadakkanchery, 
+                Lukes complex, Thadagam Road,
                 <br />
-               thrissur, Kerala
+                Velandipalayam, Coimbatore 641025.
               </span>
             </li>
-            <li className="flex items-center gap-3">
+            <li className="flex items-center gap-3 text-light/80">
               <Phone size={18} className="text-accent shrink-0" />
-              <span>+91 94438 92026</span>
+              <a href="tel:+919443892026" className="hover:text-accent transition-colors">+91 94438 92026</a>
             </li>
-            <li className="flex items-center gap-3">
+            <li className="flex items-center gap-3 text-light/80">
               <Mail size={18} className="text-accent shrink-0" />
-              <span>knowbestglobalconsultancy@gmail.com</span>
+              <a href="mailto:knowbestglobalconsultancy@gmail.com" className="hover:text-accent transition-colors break-all">knowbestglobal@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Our Branches */}
+        <div className="md:col-span-1">
+          <h4 className="text-lg font-semibold text-light mb-6">Our Branches</h4>
+          <ul className="flex flex-col gap-6 text-sm">
+            <li className="flex items-start gap-3 text-light/80">
+              <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
+              <div>
+                <p className="text-accent font-medium mb-1">Chennai Branch</p>
+                <p className="text-xs leading-relaxed opacity-90">
+                  Plot no 65, THIRUPUGAL ST,
+                  <br />
+                  KAMAKSHI NAGAR, VALASARAVAKKAM,
+                  <br />
+                  Chennai. 87
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3 text-light/80">
+              <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
+              <div>
+                <p className="text-accent font-medium mb-1">Thrissur Branch</p>
+                <p className="text-xs leading-relaxed opacity-90">
+                  Plot no 135, wadakkanchery,
+                  <br />
+                  near St ferona church, thrissur, Kerala
+                </p>
+              </div>
             </li>
           </ul>
         </div>
