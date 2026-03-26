@@ -46,7 +46,8 @@ const Navbar = () => {
 
   useEffect(() => {
     // Close mobile menu on route change
-    setMobileMenuOpen(false);
+    const timeoutId = setTimeout(() => setMobileMenuOpen(false), 0);
+    return () => clearTimeout(timeoutId);
   }, [location.pathname]);
 
   const navLinks = [
@@ -54,9 +55,25 @@ const Navbar = () => {
     { name: "About Us", path: "/#about" },
   ];
 
+  const handleNavClick = (path) => {
+    // If we're already on the home page and the click corresponds to a home page section,
+    // manually trigger smooth scrolling.
+    if (window.location.pathname === "/") {
+      if (path === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (path.startsWith("/#")) {
+        const id = path.replace("/#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   return (
     <div
-      className={`fixed top-4 md:top-8 lg:top-10 left-0 w-full px-4 md:px-10 lg:px-12 z-50 transition-all duration-500 ease-in-out flex justify-center pointer-events-none ${
+      className={`fixed top-4 md:top-8 lg:top-10 left-0 w-full px-4 md:px-10 lg:px-12 z-[999] transition-all duration-500 ease-in-out flex justify-center pointer-events-none ${
         visible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0"
       }`}
     >
@@ -68,7 +85,11 @@ const Navbar = () => {
         >
           <div className="flex justify-between items-center relative w-full">
             {/* Logo Left */}
-            <Link to="/" className="flex items-center shrink-0 z-50 gap-2">
+            <Link 
+              to="/" 
+              onClick={() => handleNavClick("/")}
+              className="flex items-center shrink-0 z-50 gap-2"
+            >
               <img
                 src={logo}
                 alt="Knowbest Global"
@@ -87,6 +108,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
+                  onClick={() => handleNavClick(link.path)}
                   className="text-primary hover:text-accent transition-colors font-bold text-[15px]"
                 >
                   {link.name}
@@ -123,6 +145,7 @@ const Navbar = () => {
             <div className="hidden lg:flex z-50 justify-end items-center">
               <Link
                 to="/#contact"
+                onClick={() => handleNavClick("/#contact")}
                 className="flex items-center gap-2 bg-transparent border border-primary/20 hover:bg-primary/5 text-primary px-5 py-2 rounded-full font-bold text-[15px] transition-all duration-300"
               >
                 Contact Us{" "}
@@ -151,7 +174,10 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   className="text-xl font-medium text-primary hover:text-accent"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleNavClick(link.path);
+                  }}
                 >
                   {link.name}
                 </Link>
@@ -202,7 +228,10 @@ const Navbar = () => {
               <Link
                 to="/#contact"
                 className="mt-6 bg-primary text-white px-8 py-3 rounded-full font-bold text-base hover:bg-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleNavClick("/#contact");
+                }}
               >
                 Contact Us
               </Link>

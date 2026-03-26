@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { ChevronRight } from "lucide-react";
 import { siteData } from "../data/data";
 import { useReveal } from "../hooks/useReveal";
@@ -10,21 +10,13 @@ const CountryDetail = () => {
   const { country } = useParams();
   
   // Find the country data synchronously to avoid empty first render
-  const getInitialData = () => {
-    return siteData.studyAbroad.find((c) => c.id === country) || null;
-  };
+  const countryData = siteData.studyAbroad.find((c) => c.id === country) || null;
 
-  const [countryData, setCountryData] = useState(getInitialData);
   const [openAccordion, setOpenAccordion] = useState(null);
   const [selectedUniversity, setSelectedUniversity] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentProgram, setCurrentProgram] = useState("");
   const mainRef = useRef(null);
-
-  // Re-sync data if country param changes
-  useEffect(() => {
-    setCountryData(getInitialData());
-  }, [country]);
 
   // Centralized animation reveal hook
   useReveal(mainRef, [country, countryData]);
@@ -56,7 +48,11 @@ const CountryDetail = () => {
   };
 
   return (
-    <div ref={mainRef} className="bg-primary min-h-screen text-light">
+    <div 
+      ref={mainRef} 
+      className="bg-primary min-h-screen text-light opacity-0 transition-opacity duration-700"
+      style={{ opacity: countryData ? 1 : 0 }}
+    >
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">

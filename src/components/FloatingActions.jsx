@@ -81,7 +81,7 @@ const FloatingActions = () => {
           </button>
 
           <a
-            href="https://wa.me/919789184846"
+            href="https://wa.me/919443892026"
             target="_blank"
             rel="noopener noreferrer"
             className="w-14 h-14 bg-accent text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl hover:bg-accent-hover border border-accent transition-all group relative"
@@ -100,7 +100,7 @@ const FloatingActions = () => {
 
       {/* Inquiry Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center p-4">
           <div
             className="absolute inset-0 bg-primary/80 backdrop-blur-sm"
             onClick={() => setIsModalOpen(false)}
@@ -152,13 +152,14 @@ const FloatingActions = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-1">
-                  Target Country
+                  Target Country <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   name="targetCountry"
                   value={targetCountry}
                   onChange={(e) => setTargetCountry(e.target.value)}
+                  required
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                   placeholder="e.g. United Kingdom"
                 />
@@ -175,7 +176,7 @@ const FloatingActions = () => {
                   required
                   rows="3"
                   className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                  placeholder="What courses are you interested in?"
+                  placeholder="Your Message..."
                 ></textarea>
               </div>
 

@@ -4,10 +4,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FloatingActions from "./components/FloatingActions";
 
-import Home from "./pages/Home";
-import CountryDetail from "./pages/CountryDetail";
-import JobDetail from "./pages/JobDetail";
-import Jobs from "./pages/Jobs";
+const Home = lazy(() => import("./pages/Home"));
+const CountryDetail = lazy(() => import("./pages/CountryDetail"));
+const JobDetail = lazy(() => import("./pages/JobDetail"));
+const Jobs = lazy(() => import("./pages/Jobs"));
 import ScrollToTop from "./components/ScrollToTop";
 
 // Loading Component

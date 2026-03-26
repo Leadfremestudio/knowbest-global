@@ -4,8 +4,6 @@ import {
   Phone,
   MapPin,
   Instagram,
-  Facebook,
-  Linkedin,
 } from "lucide-react";
 import logo from "../assets/images/knowbest-global-logo.png";
 import { siteData } from "../data/data";
@@ -18,7 +16,12 @@ const Footer = () => {
         <div className="col-span-1 md:col-span-1 flex flex-col gap-6">
           <Link
             to="/"
-            className="flex items-center gap-3 text-2xl md:text-[20px] font-bold text-accent tracking-tighter shrink-0 z-50"
+            onClick={() => {
+              if (window.location.pathname === "/" && !window.location.hash) {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center gap-3 text-2xl md:text-[20px] font-bold text-accent tracking-tighter shrink-0"
           >
             <img
               src={logo}
@@ -30,26 +33,23 @@ const Footer = () => {
             </span>
           </Link>
           <p className="text-sm leading-relaxed max-w-xs">
-            Elevating your ambitions into global success with expert guidance and trusted excellence.
+            Elevating your ambitions into global success with expert guidance
+            and trusted excellence.
           </p>
           <div className="flex gap-4">
             <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-primary transition-colors"
+              href="https://www.instagram.com/knowbestglobalconsultancy?igsh=OGl1N2psNGIwZGRp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-primary transition-colors text-light"
             >
               <Instagram size={18} />
             </a>
             <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-primary transition-colors"
+              href="tel:+919443892026"
+              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-primary transition-colors text-light"
             >
-              <Facebook size={18} />
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-accent hover:text-primary transition-colors"
-            >
-              <Linkedin size={18} />
+              <Phone size={18} />
             </a>
           </div>
         </div>
@@ -58,21 +58,43 @@ const Footer = () => {
         <div className="md:col-span-1">
           <h4 className="text-lg font-semibold text-light mb-6">Quick Links</h4>
           <div className="flex flex-wrap gap-2 mb-8">
-            <Link to="/" className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent">
+            <Link
+              to="/"
+              onClick={() => {
+                if (window.location.pathname === "/" && !window.location.hash) {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+            >
               Home
             </Link>
-            <Link to="/#about" className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent">
+            <Link
+              to="/#about"
+              className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
+            >
               About Us
             </Link>
             <Link
               to="/#contact"
+              onClick={() => {
+                if (window.location.pathname === "/") {
+                  const id = "contact";
+                  const element = document.getElementById(id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }
+              }}
               className="px-3 py-1.5 bg-secondary hover:bg-accent hover:text-primary rounded-full text-xs transition-all font-medium border border-secondary hover:border-accent"
             >
               Contact Us
             </Link>
           </div>
 
-          <h4 className="text-lg font-semibold text-light mb-6">Study Abroad</h4>
+          <h4 className="text-lg font-semibold text-light mb-6">
+            Study Abroad
+          </h4>
           <div className="flex flex-wrap gap-2">
             {siteData.studyAbroad.map((country) => (
               <Link
@@ -101,23 +123,25 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div className="md:col-span-1">
-          <h4 className="text-lg font-semibold text-light mb-6">Get In Touch</h4>
+          <h4 className="text-lg font-semibold text-light mb-6">
+            Get In Touch
+          </h4>
           <ul className="flex flex-col gap-4 text-sm">
             <li className="flex items-start gap-3">
               <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
               <span>
-                123 Global Way, Metro Business Park,
+                wadakkanchery, 
                 <br />
-                New York, NY 10001
+               thrissur, Kerala
               </span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="text-accent shrink-0" />
-              <span>+91 97891 84846</span>
+              <span>+91 94438 92026</span>
             </li>
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-accent shrink-0" />
-              <span>contact@knowbestglobal.com</span>
+              <span>knowbestglobalconsultancy@gmail.com</span>
             </li>
           </ul>
         </div>

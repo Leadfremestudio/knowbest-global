@@ -67,20 +67,20 @@ const CourseAccordion = ({
                   return (
                     <li
                       key={index}
-                      className={`flex items-center gap-3 text-light hover:text-accent transition-colors p-3 rounded-lg hover:bg-secondary/80 group ${
+                      className={`flex items-start gap-3 text-light hover:text-accent transition-colors p-3 rounded-lg hover:bg-secondary/80 group ${
                         isSelectable ? "cursor-pointer" : ""
-                      }`}
+                      } text-left`}
                       onClick={() => isSelectable && onUniversityClick && onUniversityClick(item)}
                     >
                       <ArrowRight
                         size={16}
-                        className="text-accent opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300"
+                        className="text-accent opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 shrink-0 mt-1"
                       />
-                      <span className="font-medium transform group-hover:translate-x-1 transition-transform duration-300">
+                      <span className="font-medium transform group-hover:translate-x-1 transition-transform duration-300 flex-1">
                         {name}
                       </span>
                       {isSelectable && (
-                        <span className="ml-auto text-[10px] uppercase tracking-tighter text-accent/50 group-hover:text-accent group-hover:scale-110 transition-all border border-accent/20 px-2 py-0.5 rounded-full whitespace-nowrap">
+                        <span className="ml-auto text-[10px] uppercase tracking-tighter text-accent/50 group-hover:text-accent group-hover:scale-110 transition-all border border-accent/20 px-2 py-0.5 rounded-full whitespace-nowrap self-center">
                           View Details
                         </span>
                       )}
@@ -93,7 +93,7 @@ const CourseAccordion = ({
             !isJob && (
               <div className="mt-4 flex flex-wrap gap-4">
                 <a
-                  href={`https://wa.me/919789184846?text=${encodeURIComponent(
+                  href={`https://wa.me/919443892026?text=${encodeURIComponent(
                     `Hello Knowbest Global, I'm interested in the ${title} program in ${countryName}. Please share more details.`,
                   )}`}
                   target="_blank"
@@ -115,7 +115,7 @@ const CourseAccordion = ({
           {isJob && (
             <div className="mt-8 pt-6 border-t border-accent/10">
               <a
-                href={`https://wa.me/919789184846?text=${encodeURIComponent(
+                href={`https://wa.me/919443892026?text=${encodeURIComponent(
                   `Hello Knowbest Global, I'm interested in the ${title} job sector in ${countryName}. Please share more details.`,
                 )}`}
                 target="_blank"

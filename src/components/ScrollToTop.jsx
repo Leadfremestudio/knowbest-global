@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // If there's a hash, don't scroll to top instantly to allow id scrolling
+    if (hash) return;
+
     // Disable native scroll restoration
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -25,7 +27,7 @@ const ScrollToTop = () => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };

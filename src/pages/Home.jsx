@@ -20,9 +20,10 @@ const Home = () => {
   useEffect(() => {
     if (hash) {
       const id = hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
+      
+      const scrollToElement = (behavior = "smooth") => {
+        const element = document.getElementById(id);
+        if (element) {
           const offset = 100; // Account for navbar height
           const bodyRect = document.body.getBoundingClientRect().top;
           const elementRect = element.getBoundingClientRect().top;
@@ -31,15 +32,27 @@ const Home = () => {
 
           window.scrollTo({
             top: offsetPosition,
-            behavior: "smooth",
+            behavior: behavior,
           });
-        }, 100);
-      }
+        }
+      };
+
+      // First attempt: Instant jump so user doesn't see the top of the page
+      setTimeout(() => scrollToElement("instant"), 10);
+      
+      // Subsequent attempts: Smoothly adjust in case of layout shifts
+      setTimeout(() => scrollToElement("smooth"), 100);
+      setTimeout(() => scrollToElement("smooth"), 500);
+      setTimeout(() => scrollToElement("smooth"), 1000);
     }
   }, [hash]);
 
   return (
-    <div ref={mainRef} className="bg-primary min-h-screen text-light">
+    <div 
+      ref={mainRef} 
+      className="bg-primary min-h-screen text-light opacity-0 transition-opacity duration-700"
+      style={{ opacity: 1 }}
+    >
       <Hero />
       <AboutSection />
       <Destinations />
