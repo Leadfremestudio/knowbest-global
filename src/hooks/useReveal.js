@@ -71,6 +71,9 @@ export const useReveal = (scopeRef, dependencies = []) => {
     // Using requestAnimationFrame to ensure React has finished rendering to the DOM
     const rafId = requestAnimationFrame(() => {
       ctx = gsap.context(() => {
+        // Ensure scroll is at top when starting new animations
+        window.scrollTo(0, 0);
+        
         // Staggered fade up for sections
         const sections = gsap.utils.toArray(".fade-up-section", scopeRef.current);
         sections.forEach((section) => {

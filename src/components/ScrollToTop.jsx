@@ -1,32 +1,46 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
 
-  useEffect(() => {
-    // If there's a hash, don't scroll to top instantly to allow id scrolling
-    if (hash) return;
-
-    // Disable native scroll restoration
+  useLayoutEffect(() => {
+    // Disable native scroll restoration on first load or mount
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
+  }, []);
 
-    // Reset scroll to top instantly
+  useLayoutEffect(() => {
+    // If there's a hash, let the browser handle it or other logic handle it
+    if (hash) return;
+
+    // Direct scroll to top with no behavior (instant)
     window.scrollTo(0, 0);
-    
-    // Clear any existing ScrollTriggers to be safe, or just refresh
-    // This allows new triggers to calculate from the top of the page
-    ScrollTrigger.refresh();
-    
-    // Double refresh with a slight delay to ensure dynamic content has loaded
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    document.documentElement.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
 
-    return () => clearTimeout(timer);
+    // Clear GSAP memory if available
+    if (ScrollTrigger.clearScrollMemory) {
+      ScrollTrigger.clearScrollMemory();
+    }
+    
+    // Refresh ScrollTrigger after a short delay for dynamic content
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
+    }, 10);
+
+    // One more try after suspense components might have mounted
+    const longTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(longTimer);
+    };
   }, [pathname, hash]);
 
   return null;
