@@ -149,12 +149,12 @@ const Footer = () => {
               <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
               <div>
                 <p className="text-accent font-medium mb-1">Chennai Branch</p>
-                <p className="text-xs leading-relaxed opacity-90">
-                  Plot no 65, THIRUPUGAL ST,
+                <p className="text-xs leading-relaxed opacity-90 capitalize">
+                  Plot no 65, thirupugal st,
                   <br />
-                  KAMAKSHI NAGAR, VALASARAVAKKAM,
+                  kamakshi nagar, valasaravakkam,
                   <br />
-                  Chennai. 87
+                  chennai. 87
                 </p>
               </div>
             </li>
@@ -162,10 +162,10 @@ const Footer = () => {
               <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
               <div>
                 <p className="text-accent font-medium mb-1">Thrissur Branch</p>
-                <p className="text-xs leading-relaxed opacity-90">
+                <p className="text-xs leading-relaxed opacity-90 capitalize">
                   Plot no 135, wadakkanchery,
                   <br />
-                  near St ferona church, thrissur, Kerala
+                  near st ferona church, thrissur, kerala
                 </p>
               </div>
             </li>
